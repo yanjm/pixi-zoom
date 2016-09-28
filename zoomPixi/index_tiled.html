@@ -1,0 +1,139 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>New_Zoom_Pixijs</title>
+
+<body>
+<script src="./library/plugins/pixi.js/bin/pixi.js"></script>
+
+<script>
+
+
+let Container = PIXI.Container,
+    autoDetectRenderer = PIXI.autoDetectRenderer,
+    loader = PIXI.loader,
+    resources = PIXI.loader.resources,
+    TextureCache = PIXI.utils.TextureCache,
+    Texture = PIXI.Texture,
+    Graphics = PIXI.Graphics,
+    Text = PIXI.Text,
+    MovieClip = PIXI.extras.MovieClip,
+    Sprite = PIXI.Sprite;
+
+
+
+let stage = new Container(),
+     renderer = new PIXI.CanvasRenderer(256,256); 
+document.body.appendChild(renderer.view);
+
+renderer.backgroundColor = 0x751639;
+
+//  renderer.render(stage);
+
+loader
+    .add("images/zs.json")//僵尸-帧
+    .load(setup);
+
+
+
+// var canvasElem = document.createElement("canvas");
+
+// var ctx = canvasElem.getContext("2d");
+
+
+// // I fix the width/height, but you can also compute it from the input string
+
+// canvasElem.width  = 100;
+
+// canvasElem.height = 50;
+
+
+// // e.g. "20pt Arial"
+
+// ctx.font = "20pt Arial";
+
+
+// // default values
+
+// ctx.fillStyle = "black";
+
+// ctx.strokeStyle = "black";
+
+// ctx.lineWidth = 0;
+
+
+// // pixi default, although usual default is "alphabetic"
+
+// ctx.textBaseline = "top";
+
+
+// // pixi default, although usual is "start"
+
+// ctx.textAlign = "left";
+
+
+// // draw the text
+
+// // the coordinates specify where to start drawing from
+
+// ctx.fillText("your text here",0,0);
+
+
+// // optionally, draw text outline too
+
+// // by default pixi doesn't do this
+
+// // ctx.strokeText("your text here",0,0);
+
+// var texture = PIXI.Texture.fromCanvas(canvasElem);
+
+// var sprite  = new PIXI.Sprite(texture);
+
+
+// let su,scale,t,b,background,idz,hero,pixie,ui;
+
+function setup() {
+ 
+var canvasElem = document.createElement("canvas");
+var ctx = canvasElem.getContext("2d");
+canvasElem.width  = 100;
+canvasElem.id="io";
+canvasElem.height = 50;
+ctx.font = "20pt Arial";
+
+ctx.fillStyle = "white";
+ctx.lineWidth = 0;
+
+ctx.textBaseline = "top";
+ctx.textAlign = "left";
+ctx.fillText("your text here",0,0);
+
+
+
+//  canvasElem.AddVisual(btn);   
+//  canvasElem.SetLeft(btn, 100);  
+//   canvasElem.SetTop(btn, 100);
+
+var texture = PIXI.Texture.fromCanvas(canvasElem);
+
+var sprite  = new PIXI.Sprite(texture);
+
+
+ stage.addChild(sprite);
+
+//   renderer.render(stage);
+
+  gameLoop();
+}
+
+
+function gameLoop(){
+
+  requestAnimationFrame(gameLoop);
+
+
+  renderer.render(stage);
+}
+
+
+</script>
+</body>

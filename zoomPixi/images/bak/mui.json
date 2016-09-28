@@ -1,0 +1,124 @@
+{"frames": {
+
+"Mooji_Ui_Alliance_Icon.png":
+{
+	"frame": {"x":2,"y":2,"w":121,"h":106},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":121,"h":106},
+	"sourceSize": {"w":121,"h":106}
+},
+"Mooji_Ui_Button.png":
+{
+	"frame": {"x":125,"y":2,"w":137,"h":72},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":137,"h":72},
+	"sourceSize": {"w":137,"h":72}
+},
+"Mooji_Ui_Diamonds.png":
+{
+	"frame": {"x":264,"y":2,"w":49,"h":49},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":49,"h":49},
+	"sourceSize": {"w":49,"h":49}
+},
+"Mooji_Ui_Down_Bottom.png":
+{
+	"frame": {"x":315,"y":2,"w":640,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":640,"h":128},
+	"sourceSize": {"w":640,"h":128}
+},
+"Mooji_Ui_Hero_Hat.png":
+{
+	"frame": {"x":957,"y":2,"w":108,"h":71},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":71},
+	"sourceSize": {"w":108,"h":71}
+},
+"Mooji_Ui_Icon.png":
+{
+	"frame": {"x":1067,"y":2,"w":86,"h":86},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":86,"h":86},
+	"sourceSize": {"w":86,"h":86}
+},
+"Mooji_Ui_Icon_Plus.png":
+{
+	"frame": {"x":1155,"y":2,"w":30,"h":30},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":30},
+	"sourceSize": {"w":30,"h":30}
+},
+"Mooji_Ui_Icon_Recharge.png":
+{
+	"frame": {"x":1187,"y":2,"w":42,"h":42},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":42,"h":42},
+	"sourceSize": {"w":42,"h":42}
+},
+"Mooji_Ui_Letter.png":
+{
+	"frame": {"x":1231,"y":2,"w":65,"h":69},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":65,"h":69},
+	"sourceSize": {"w":65,"h":69}
+},
+"Mooji_Ui_Map.png":
+{
+	"frame": {"x":1298,"y":2,"w":126,"h":98},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":126,"h":98},
+	"sourceSize": {"w":126,"h":98}
+},
+"Mooji_Ui_Menus_Icon_Farm.png":
+{
+	"frame": {"x":1426,"y":2,"w":252,"h":174},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":53,"w":252,"h":174},
+	"sourceSize": {"w":280,"h":280}
+},
+"Mooji_Ui_Menus_Icon_Main_City1.png":
+{
+	"frame": {"x":1680,"y":2,"w":120,"h":114},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":3,"w":120,"h":114},
+	"sourceSize": {"w":128,"h":128}
+},
+"Mooji_Ui_Prompt.png":
+{
+	"frame": {"x":1802,"y":2,"w":75,"h":71},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":71},
+	"sourceSize": {"w":75,"h":71}
+},
+"dalier.png":
+{
+	"frame": {"x":1879,"y":2,"w":112,"h":139},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":112,"h":139},
+	"sourceSize": {"w":112,"h":139}
+}},
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "mui.png",
+	"format": "RGBA8888",
+	"size": {"w":1993,"h":178},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:b17a9c00cf1043cbc683b7f12c5d36d3$"
+}
+}

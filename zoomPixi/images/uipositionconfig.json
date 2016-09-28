@@ -1,0 +1,112 @@
+{
+    "uis": {
+        "Mooji_The_Chest.png": {},
+        "Mooji_Ui_Alliance_Icon.png": {},
+        "Mooji_Ui_Button.png": {},
+        "Mooji_Ui_Button_Recharge.png": {},
+        "Mooji_Ui_Button_Recharge_Big.png": {},
+        "Mooji_Ui_Button_Recharge_Big1.png": {},
+        "Mooji_Ui_Button_Recharge_Big2.png": {},
+        "Mooji_Ui_Diamonds.png": {},
+        "Mooji_Ui_Diamonds_Green1.png": {},
+        "Mooji_Ui_Down_Bottom.png": {},
+        "Mooji_Ui_Food.png": {},
+        "Mooji_Ui_Guild_Number_Bottom3.png": {},
+        "Mooji_Ui_Head_Rufus_Partly_BT.png": {},
+        "Mooji_Ui_Hero_Hat.png": {},
+        "Mooji_Ui_Icon.png": {},
+        "Mooji_Ui_Icon_Bt_Barrel.png": {},
+        "Mooji_Ui_Icon_Globe_128X128.png": {},
+        "Mooji_Ui_Icon_Plus.png": {},
+        "Mooji_Ui_Icon_Recharge.png": {},
+        "Mooji_Ui_Letter.png": {},
+        "Mooji_Ui_Magnifier_Seek.png": {},
+        "Mooji_Ui_Map.png": {},
+        "Mooji_Ui_Prompt.png": {},
+        "Mooji_Ui_Release_Task_Bottom1.png": {},
+        "Mooji_Ui_Screw.png": {},
+        "Mooji_Ui_Up_Bottom.png": {},
+        "Mooji_Ui_Up_Bottom_Iron.png": {},
+        "Mooji_Ui_Vip.png": {},
+        "dalier.png": {}
+    },
+    "innerui": {
+        "layer0": {
+            "Mooji_Ui_Down_Bottom.png": {
+                "postype": 1,
+                "x": 0,
+                "y": 1010,
+                "btnx":135,
+                "btny":1010,
+                "btnw":360,
+                "btnh":128
+            },
+			"Mooji_Ui_Up_Bottom.png": {
+                "postype": -1,
+                "x": 0,
+                "y": 0
+            }
+        },
+		"layer1": {
+            "Mooji_Ui_Map.png": {
+                "postype": 1,
+                "x": 0,
+                "y": 1010
+            },
+			"Mooji_Ui_Alliance_Icon.png": {
+                "postype": 1,
+                "x": 519,
+                "y": 1010
+            },
+            "dalier.png": {
+                "postype": -1,
+                "x": 0,
+                "y": 0
+            },
+            "Mooji_Ui_Vip.png": {
+                "postype": -1,
+                "x": 112,
+                "y": 0
+            },
+            "Mooji_Ui_Button.png": {
+                "postype": -1,
+                "x": 503,
+                "y": 0
+            },
+            "Mooji_Ui_Diamonds.png": {
+                "postype": 1,
+                "x": 579,
+                "y": 10
+            },
+            
+            "Mooji_Ui_Icon_Plus.png":{
+                "postype": 1,
+                "x": 570,
+                "y": 200
+            },
+            "Mooji_Ui_Icon_Recharge.png":{
+                "postype": 1,
+                "x": 579,
+                "y": 210
+            }
+        }
+    },
+    "chat": {
+        "layer0": {
+            "Mooji_Kraft_Paper_Bottom.png": {
+                "postype": 0,
+                "x": 0,
+                "y": 1010,
+                "btnx":135,
+                "btny":1010,
+                "btnw":360,
+                "btnh":128
+            },
+			"Mooji_Ui_Up_Bottom_Iron.png": {
+                "postype": -1,
+                "x": 0,
+                "y": 0
+            }
+        }
+    }
+}

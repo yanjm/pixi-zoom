@@ -1,0 +1,565 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>New_Zoom_Pixijs</title>
+
+<body>
+<script src="./library/plugins/pixi.js/bin/pixi.js"></script>
+<script src="./library/spriteUtilities/bin/spriteUtilities.js"></script>
+<script src="./library/tink/bin/tink.js"></script>
+<script src="./library/scaleToWindow/scaleToWindow.js"></script>
+<script src="./library/bump/bin/bump.js"></script>
+<script src="./library/pixitiled/bin/pixi-tiled.js"></script>
+<script src="./library/plugins/json3/json3.min.js"></script>
+<script src="./library/plugins/json3/jquery-3.1.1.min.js"></script>
+
+<script>
+
+//
+let Container = PIXI.Container,
+    autoDetectRenderer = PIXI.autoDetectRenderer,
+    loader = PIXI.loader,
+    resources = PIXI.loader.resources,
+    TextureCache = PIXI.utils.TextureCache,
+    Texture = PIXI.Texture,
+    Graphics = PIXI.Graphics,
+    Text = PIXI.Text,
+    MovieClip = PIXI.extras.MovieClip,
+    Sprite = PIXI.Sprite;
+
+
+
+let stage = new Container(),
+     renderer = new PIXI.CanvasRenderer(640,1138); 
+document.body.appendChild(renderer.view);
+
+
+renderer.backgroundColor = 0x191970;
+
+let state = play;
+let sceneState = inner;
+
+//scenes
+let city,world;
+let res_outmap,res_innerui,res_outerui;
+
+let su,scale,t,b,background,idz,pixie,pixim,res_mainui;
+
+let innerBtns={};
+let innerBtn_bottom_left,innerBtn_chat,innerBtn_bottom_right;
+
+let outerBtns={};
+let outerBtn_bottom_left,outerBtn_chat,outerBtn_bottom_right;
+
+//init_btns
+// (initallbtninfo());
+
+//js 生成动态全局对象
+//http://duanmubuzhi.iteye.com/blog/1869827
+//http://bbs.csdn.net/topics/360152929
+
+loader
+    .add("images/zs.json")
+    .add("background","images/Mooji_preview11.png")
+    .add("images/mainui.json",function(res)
+    {
+      res_mainui = res.textures
+    }
+    )
+    .add('images/sewers.json', function(res)
+    {
+        res_outmap = res.tiledMap;
+    })
+    // .add('images/innerui.json', function(res)
+    // {
+    //     res_innerui = res.tiledMap;
+    // })
+    // .add('images/outerui.json', function(res)
+    // {
+    //     res_outerui = res.tiledMap;
+    // })
+    .load(setup);
+
+
+function setup() {
+    su = new SpriteUtilities(PIXI);
+    scale = scaleToWindow(renderer.view);
+    t = new Tink(PIXI,renderer.view,scale);
+    b = new Bump(PIXI);
+
+    pointer = t.makePointer();
+    // pointer.press = ()=>{
+
+    // };
+    // pointer.release = ()=>{
+
+    // };
+    // pointer.tap = ()=>{
+
+    // };
+   
+     
+
+//outerScene
+    world = new Container();
+    world.addChild(res_outmap);
+
+    let idm = PIXI.loader.resources["images/zs.json"].textures; 
+
+    let fsm = [
+        idm["Mooji_jiangshiA_01_0000.png"],
+        idm["Mooji_jiangshiA_01_0002.png"],
+        idm["Mooji_jiangshiA_01_0004.png"],
+        idm["Mooji_jiangshiA_01_0006.png"]
+    ]
+
+    pixim = new MovieClip(fsm);
+    pixim.animationSpeed=0.35;
+    pixim.play();
+    pixim.x = 150;
+    pixim.y = 160; 
+    pixim.vx = 0;
+    pixim.vy = 0; 
+
+    listenrevent(pixim);
+    res_outmap.addChild(pixim)
+    stage.addChild(world);
+
+     
+//innerScene
+    city = new Container();
+    background = new PIXI.Sprite(resources.background.texture);
+    background.position.x = 0;
+    background.position.y = 0;
+
+    idz = PIXI.loader.resources["images/zs.json"].textures; 
+    let fs = [
+        idz["Mooji_jiangshiA_01_0000.png"],
+        idz["Mooji_jiangshiA_01_0002.png"],
+        idz["Mooji_jiangshiA_01_0004.png"],
+        idz["Mooji_jiangshiA_01_0006.png"]
+    ]
+    pixie = new MovieClip(fs);
+    pixie.animationSpeed=0.15;
+    pixie.play();
+    pixie.x = 150;
+    pixie.y = 160; 
+    pixie.vx = 0;
+    pixie.vy = 0; 
+
+    listenrevent(pixie);
+
+    if (pointer.hitTestSprite(background)) {
+      pointer.cursor = "pointer";
+    }else {
+      pointer.cursor = "auto";
+    }
+
+    
+    t.makeUndraggable(background);
+    
+    background.addChild(pixie)
+    city.addChild(background);
+    stage.addChild(city);
+
+
+//innerui
+    // innerui = new Container();
+    // innerui.addChild(res_innerui);
+    // stage.addChild(innerui);
+
+    // for(let prop in innerBtns){
+    //   if(innerBtns.hasOwnProperty(prop)){
+    //       addbtnevent(prop,innerBtns);
+    //    }
+    // }
+// console.log(res_mainui);
+//     var obj = jQuery.parseJSON('{ "name": "John" }' );
+//     var op = JSON.stringify(res_mainui);
+//     console.log(op);
+    innerui = new Container();
+    
+    let hero = new Sprite(res_mainui["Mooji_Ui_Down_Bottom.png"]);
+    // hero.position.x = 0;
+    hero.position.y = 1138-128;
+    innerui.addChild(hero);
+
+    let hero4 = new Sprite(res_mainui["Mooji_Ui_Up_Bottom.png"]);
+    // hero.position.x = 0;
+    // hero.position.y = 0;
+    innerui.addChild(hero4);
+
+
+
+
+
+
+    let hero1 = new Sprite(res_mainui["Mooji_Ui_Map.png"]);
+    // hero.position.x = 0;
+    hero1.position.y = 1138-128;
+    innerui.addChild(hero1);
+
+    let hero2 = new Sprite(res_mainui["Mooji_Ui_Alliance_Icon.png"]);
+    hero2.position.x = 640-121;
+    hero2.position.y = 1138-128;
+    innerui.addChild(hero2);
+
+    let hero5 = new Sprite(res_mainui["dalier.png"]);
+    // hero2.position.x = 640-121;
+    // hero2.position.y = 1138-128;
+    innerui.addChild(hero5);
+
+    let hero6 = new Sprite(res_mainui["Mooji_Ui_Vip.png"]);
+    hero6.position.x = 112;
+    // hero2.position.y = 1138-128;
+    innerui.addChild(hero6);
+
+
+     let hero7 = new Sprite(res_mainui["Mooji_Ui_Button.png"]);
+    hero7.position.x = 640-137;
+    // hero2.position.y = 1138-128;
+    innerui.addChild(hero7);
+
+    let hero8 = new Sprite(res_mainui["Mooji_Ui_Diamonds.png"]);
+    hero8.position.x = 640-49-10;
+    hero8.position.y = 10;
+    innerui.addChild(hero8);
+
+
+
+    stage.addChild(innerui);
+
+//outerui
+    // outerui = new Container();
+    // outerui.addChild(res_outerui);
+    // stage.addChild(outerui);
+
+    // for(let prop in outerBtns){
+    //   if(outerBtns.hasOwnProperty(prop)){
+    //       addbtnevent(prop,outerBtns);
+    //    }
+    // }
+    // outerui.visible = false;
+
+//pub
+    //  pointer.x = pointer.x / scale;
+    //  pointer.y = pointer.y / scale;
+    window.addEventListener("resize",event => {
+      scaleToWindow(renderer.view)
+    });
+    t.makeDraggable(background);
+    
+    loop();
+    
+}
+function inner(){
+  city.visible = true;
+  // innerui.visible = true;
+
+  world.visible = false;
+  // outerui.visible = false;
+  contain(background, {x: (renderer.width-background.width), y: (renderer.height-background.height), width: background.width, height: background.height});
+}
+
+function outer(){
+  city.visible = false;
+  // innerui.visible = false;
+
+  world.visible = true;
+  // outerui.visible = true;
+  contain(res_outmap, {x: (renderer.width-res_outmap.width), y: (renderer.height-res_outmap.height), width: res_outmap.width, height: res_outmap.height});
+}
+
+function play() {
+    if (city.visible){
+      pixie.x += pixie.vx;
+      pixie.y += pixie.vy;
+      contain(pixie, {x: 0, y: 0, width: 4096, height: 4096});
+    }else if(world.visible){
+      pixim.x += pixim.vx;
+      pixim.y += pixim.vy;
+      contain(pixim, {x: 0, y: 0, width: 4096, height: 4096});
+    }
+}
+
+function reset(){
+    //
+}
+
+// function wait(duration = 0){
+//   return new Promise(resolve,reject)=>{
+//     setTimeOut(resolve,duration);
+//   });
+// }
+
+
+function loop() {
+    
+
+    requestAnimationFrame(loop);
+    t.update();
+    sceneState();
+    state();
+
+   
+
+
+    // state = end;
+
+    renderer.render(stage);
+
+}
+
+function end(){
+  //  stage.visible = false;
+}
+
+
+
+function listenrevent(obj){
+
+  let left = keyboard(37),
+      up = keyboard(38),
+      right = keyboard(39),
+      down = keyboard(40);
+    
+  left.press = function() {
+    obj.vx = -5;
+    obj.vy = 0;
+  };
+
+  left.release = function() {
+    if (!right.isDown && obj.vy === 0) {
+      obj.vx = 0;
+    }
+  };
+
+  up.press = function() {
+    obj.vy = -5;
+    obj.vx = 0;
+  };
+  up.release = function() {
+    if (!down.isDown && obj.vx === 0) {
+      obj.vy = 0;
+    }
+  };
+
+  right.press = function() {
+    obj.vx = 5;
+    obj.vy = 0;
+  };
+  right.release = function() {
+    if (!left.isDown && obj.vy === 0) {
+      obj.vx = 0;
+    }
+  };
+
+  down.press = function() {
+    obj.vy = 5;
+    obj.vx = 0;
+  };
+  down.release = function() {
+    if (!up.isDown && obj.vx === 0) {
+      obj.vy = 0;
+    }
+  };
+}
+
+
+function keyboard(keyCode) {
+  let key = {};
+  key.code = keyCode;
+  key.isDown = false;
+  key.isUp = true;
+  key.press = undefined;
+  key.release = undefined;
+  //The `downHandler`
+  key.downHandler = function(event) {
+    if (event.keyCode === key.code) {
+      if (key.isUp && key.press) key.press();
+      key.isDown = true;
+      key.isUp = false;
+    }
+    event.preventDefault();
+  };
+
+  //The `upHandler`
+  key.upHandler = function(event) {
+    if (event.keyCode === key.code) {
+      if (key.isDown && key.release) key.release();
+      key.isDown = false;
+      key.isUp = true;
+    }
+    event.preventDefault();
+  };
+
+  //Attach event listeners
+  window.addEventListener(
+    "keydown", key.downHandler.bind(key), false
+  );
+  window.addEventListener(
+    "keyup", key.upHandler.bind(key), false
+  );
+  return key;
+}
+
+
+function contain(sprite, container) {
+
+  var collision = undefined;
+
+  //Left
+  if (sprite.x < container.x) {
+    sprite.x = container.x;
+    collision = "left";
+  }
+
+  //Top
+  if (sprite.y < container.y) {
+    sprite.y = container.y;
+    collision = "top";
+  }
+
+  //Right
+  if (sprite.x + sprite.width > container.width) {
+    sprite.x = container.width - sprite.width;
+    collision = "right";
+  }
+
+  //Bottom
+  if (sprite.y + sprite.height > container.height) {
+    sprite.y = container.height - sprite.height;
+    collision = "bottom";
+  }
+
+  //Return the `collision` value
+  return collision;
+}
+
+function addbtnevent(prop,innerBtns){
+  if(prop=="innerBtn_bottom_left"){
+              innerBtn_bottom_left = new Sprite();
+              // addClick(innerBtn_bottom_left,prop);
+              innerBtn_bottom_left.btnName = prop;
+
+              t.makeInteractive(innerBtn_bottom_left);
+
+
+              innerBtn_bottom_left.position.x = innerBtns[prop].x;
+              innerBtn_bottom_left.position.y = innerBtns[prop].y;
+
+              innerBtn_bottom_left.width = innerBtns[prop].width;
+              innerBtn_bottom_left.height = innerBtns[prop].height;
+
+              innerBtn_bottom_left.press =()=>{
+                console.log("sdfj00011:"+innerBtn_bottom_left.btnName);
+              };
+              innerBtn_bottom_left.release =()=>{
+              if (sceneState == inner){
+                sceneState = outer;
+                t.makeDraggable(res_outmap);
+              }else{
+                sceneState = inner;
+                t.makeDraggable(background);
+              }
+
+              };
+
+
+              innerBtn_bottom_left.over=()=>{
+               
+                console.log("over0000:"+ pointer.visible);
+              };
+          }else if(prop=="innerBtn_chat"){
+              innerBtn_chat = new Sprite();
+              innerBtn_chat.btnName = prop;
+              // addClick(innerBtn_chat,prop);
+              t.makeInteractive(innerBtn_chat);
+              innerBtn_chat = new Sprite()
+              innerBtn_chat.over=()=>{
+               
+                console.log("1221231:"+ pointer.visible);
+              };
+          }else if(prop=="innerBtn_bottom_right"){
+              innerBtn_bottom_right = new Sprite();
+              // addClick(innerBtn_bottom_right,prop);
+              innerBtn_bottom_right.btnName = prop;
+              t.makeInteractive(innerBtn_bottom_right);
+
+              innerBtn_bottom_right.position.x = innerBtns[prop].x;
+              innerBtn_bottom_right.position.y = innerBtns[prop].y;
+
+              innerBtn_bottom_right.width = innerBtns[prop].width;
+              innerBtn_bottom_right.height = innerBtns[prop].height;
+
+              innerBtn_bottom_right.press =()=>{
+                console.log("sdfj000:"+innerBtn_bottom_right.btnName);
+              };
+              // innerBtn_bottom_right.release =()=>{
+              //   if (sceneState == inner){
+              //     sceneState = outer;
+              //     t.makeDraggable(res_outmap);
+              //   }else{
+              //     sceneState = inner;
+              //     t.makeDraggable(background);
+              //   }
+
+              // };
+
+
+              innerBtn_bottom_right.over=()=>{
+               
+                console.log("rc0000:"+ pointer.visible);
+              };
+          }
+}
+
+function inituio(){
+  $.getJSON('./images/uipositionconfig.json',function(data){
+      let layers = data.uis;
+      for(let i in layers){
+          let tempLayer = layers[i];
+          if(tempLayer.name == "btns"){
+            let tempObjects = tempLayer.objects
+            for(var j in tempObjects){
+                innerBtns[tempObjects[j].name] = tempObjects[j]; 
+            }
+          }
+      }
+
+  });
+
+
+}
+
+function initallbtninfo(){
+  $.getJSON('./images/innerui.json',function(data){
+      let layers = data.layers;
+      for(let i in layers){
+          let tempLayer = layers[i];
+          if(tempLayer.name == "btns"){
+            let tempObjects = tempLayer.objects
+            for(var j in tempObjects){
+                innerBtns[tempObjects[j].name] = tempObjects[j]; 
+            }
+          }
+      }
+
+  });
+
+  $.getJSON('./images/outerui.json',function(data){
+      let layers = data.layers;
+      for(let i in layers){
+          let tempLayer = layers[i];
+          if(tempLayer.name == "btns"){
+            let tempObjects = tempLayer.objects
+            for(var j in tempObjects){
+                outerBtns[tempObjects[j].name] = tempObjects[j]; 
+            }
+          }
+      }
+
+  });
+}
+
+</script>
+</body>

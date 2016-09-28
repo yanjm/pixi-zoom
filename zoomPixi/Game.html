@@ -1,0 +1,920 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>New_Zoom_Pixijs</title>
+
+<body>
+
+
+<script src="./library/plugins/pixi.js/bin/pixi.js"></script>
+<script src="./library/spriteUtilities/bin/spriteUtilities.js"></script>
+<script src="./library/tink/bin/tink.js"></script>
+<script src="./library/scaleToWindow/scaleToWindow.js"></script>
+<script src="./library/bump/bin/bump.js"></script>
+<script src="./library/pixitiled/bin/pixi-tiled.js"></script>
+<script src="./library/plugins/json3/json3.min.js"></script>
+<script src="./library/plugins/json3/jquery-3.1.1.min.js"></script>
+
+<script>
+
+//
+let Container = PIXI.Container,
+    autoDetectRenderer = PIXI.autoDetectRenderer,
+    loader = PIXI.loader,
+    resources = PIXI.loader.resources,
+    TextureCache = PIXI.utils.TextureCache,
+    Texture = PIXI.Texture,
+    Graphics = PIXI.Graphics,
+    Text = PIXI.Text,
+    MovieClip = PIXI.extras.MovieClip,
+    Sprite = PIXI.Sprite;
+
+
+let stage = new Container(),
+     renderer = new PIXI.CanvasRenderer(640,1138); 
+document.body.appendChild(renderer.view);
+
+renderer.backgroundColor = 0x191970;
+
+// 
+let state = play;
+let sceneState = inner;
+let pre_sceneState = inner;
+
+//scenes
+let city,world,chatStyle;
+let res_outmap,res_innerui,res_outerui;
+
+let su,scale,t,b,background,idz,pixie,pixim,res_mainui;
+
+let innerBtns={};
+let innerBtn_bottom_left,innerBtn_chat,innerBtn_bottom_right;
+
+let outerBtns={};
+let outerBtn_bottom_left,outerBtn_chat,outerBtn_bottom_right;
+
+// (initallbtninfo());
+inituis();
+
+//js 生成动态全局对象
+//http://duanmubuzhi.iteye.com/blog/1869827
+
+//touch click   点击事件穿透
+//http://www.tuicool.com/articles/6NfaUnM
+// http://www.cnblogs.com/yexiaochai/p/3462657.html
+//http://www.cnblogs.com/yexiaochai/p/3442220.html
+
+ 
+
+loader
+    .add("images/zs.json")//僵尸-帧
+    .add("background","images/Mooji_preview11.png")//内城-底图
+    .add("chatbackground","images/Mooji_Kraft_Paper_Bottom.png")//聊天-底图
+    .add("images/mainui.json",function(res)//UI-帧
+    {
+      res_mainui = res.textures
+    })
+    .add('images/sewers.json', function(res)//世界-地图
+    {
+        res_outmap = res.tiledMap;
+    })
+    .load(setup);
+
+
+function setup() {
+    su = new SpriteUtilities(PIXI);
+    scale = scaleToWindow(renderer.view);
+    t = new Tink(PIXI,renderer.view,scale);
+    b = new Bump(PIXI);
+
+    pointer = t.makePointer();
+    // pointer.press = ()=>{
+
+    // };
+    // pointer.release = ()=>{
+
+    // };
+    // pointer.tap = ()=>{
+
+    // };
+   
+     
+
+//outerScene
+    world = new Container();
+    world.addChild(res_outmap);
+
+    let idm = PIXI.loader.resources["images/zs.json"].textures; 
+
+    let fsm = [
+        idm["Mooji_jiangshiA_01_0000.png"],
+        idm["Mooji_jiangshiA_01_0002.png"],
+        idm["Mooji_jiangshiA_01_0004.png"],
+        idm["Mooji_jiangshiA_01_0006.png"]
+    ]
+
+    pixim = new MovieClip(fsm);
+    pixim.animationSpeed=0.35;
+    pixim.play();
+    pixim.x = 150;
+    pixim.y = 160; 
+    pixim.vx = 0;
+    pixim.vy = 0; 
+
+    if(sceneState == outer){
+      // listenrevent(pixim);//待进一步处理：与录入冲突
+    }
+    
+    res_outmap.addChild(pixim)
+    stage.addChild(world);
+
+//innerScene
+    city = new Container();
+    background = new PIXI.Sprite(resources.background.texture);
+    background.position.x = 0;
+    background.position.y = 0;
+
+    idz = PIXI.loader.resources["images/zs.json"].textures; 
+    let fs = [
+        idz["Mooji_jiangshiA_01_0000.png"],
+        idz["Mooji_jiangshiA_01_0002.png"],
+        idz["Mooji_jiangshiA_01_0004.png"],
+        idz["Mooji_jiangshiA_01_0006.png"]
+    ]
+    pixie = new MovieClip(fs);
+    pixie.animationSpeed=0.15;
+    pixie.play();
+    pixie.x = 150;
+    pixie.y = 160; 
+    pixie.vx = 0;
+    pixie.vy = 0; 
+
+     if(sceneState == inner){
+    // listenrevent(pixie);//待进一步处理：与录入冲突
+     }
+
+    if (pointer.hitTestSprite(background)) {
+      pointer.cursor = "pointer";
+    }else {
+      pointer.cursor = "auto";
+    }
+    t.makeUndraggable(background);
+    background.addChild(pixie)
+    city.addChild(background);
+    stage.addChild(city);
+    innerui = new Container();
+    stage.addChild(innerui);
+
+//UIAct
+    for(let layername in uidata){
+      let layer = uidata[layername]
+      for(let prop in layer){
+          uibtnact(this[prop],prop,layer[prop]);
+      }
+    }
+
+//pub
+    //  pointer.x = pointer.x / scale;
+    //  pointer.y = pointer.y / scale;
+    window.addEventListener("resize",event => {
+      scaleToWindow(renderer.view);
+    });
+    t.makeDraggable(background);
+
+//聊天-待优化
+    chatStyle = new Container();
+
+    chatBar = new PIXI.Sprite(resources.chatbackground.texture);
+    chatBar1 = new PIXI.Sprite(res_mainui["Mooji_Ui_Eject_Frame1.png"]);
+    chatBar1.position.y = 300;
+
+    chatObject();
+    
+    
+    chatStyle.addChild(chatBar);
+    chatStyle.addChild(chatBar1);
+
+    let chatLimit = new Container();
+    chatLimit.height = renderer.height;
+    chatLimit.position.y = 0;
+
+    chatsGroup.position.y = -(chatsGroup.height+renderer.height);
+    chatLimit.addChild(chatsGroup);
+    chatStyle.addChild(chatLimit);
+    
+    chatLabel= new Sprite(res_mainui["Mooji_Ui_Up_Bottom_Iron.png"]);
+    // chatClose.position.x = renderer.width-chatClose.width;
+    chatStyle.addChild(chatLabel);
+ 
+    let chatClose = new Sprite(res_mainui["Mooji_Ui_Close_Button.png"]);
+    chatClose.position.x = renderer.width-chatClose.width-20;
+    chatClose.interactive = true;
+    chatClose.buttonMode = true;
+    // chatClose.click = function(data){//聊天-退出事件
+    //   sceneState = pre_sceneState;
+    // }
+    chatClose.mousedown = function(data){
+      chatClose.scale.x += 0.1;
+      chatClose.scale.y += 0.1;
+    }
+    chatClose.mouseup = function(data){
+      chatClose.scale.x -= 0.1;
+      chatClose.scale.y -= 0.1;
+      sceneState = pre_sceneState;
+    }
+    chatStyle.addChild(chatClose);
+   
+    let chatTitle = new PIXI.Text("chat",{font:"50px Arial",fill:"yellow"});
+    chatTitle.position.x = renderer.width/2 - chatTitle.width/2;
+    chatStyle.addChild(chatTitle);
+
+    let chatBar2 = new PIXI.Sprite(res_mainui["Mooji_Black_Dark_Bottom1.png"]);
+    chatBar2.position.y = chatLabel.height;
+    chatStyle.addChild(chatBar2);
+
+
+    
+    chatInputBefore = new Sprite(res_mainui["Mooji_Ui_Btn_Blue_80x78.png"]);
+    chatInputBefore.position.y = renderer.height-chatInputBefore.height;
+    chatStyle.addChild(chatInputBefore);
+
+    let chatInput = new Sprite(res_mainui["Mooji_Buttom_F1_434X62.png"]);
+    chatInput.position.y = renderer.height-chatInput.height;
+    chatInput.position.x = chatInputBefore.width;
+    chatStyle.addChild(chatInput);
+
+    let chatInputEnd= new Sprite(res_mainui["Mooji_Ui_Btn_Blue_80x78.png"]);
+    chatInputEnd.interactive = true;
+    // chatInputEnd.buttonMode = true;
+    chatInputEnd.mousedown = function(data){
+      chatInputEnd.scale.x += 0.1;
+      chatInputEnd.scale.y += 0.1;
+    }
+    chatInputEnd.mouseup = function(data){//
+      let chatInp = document.getElementById('chatInput').value;
+      console.log("你输入的信息："+chatInp);
+      chatInputEnd.scale.x -= 0.1;
+      chatInputEnd.scale.y -= 0.1;
+    }
+    chatInputEnd.position.y = renderer.height-chatInputEnd.height;
+    chatInputEnd.position.x = chatInputBefore.width+chatInput.width;
+    let chatSubBtn = new PIXI.Text("sub",{font:"20px Arial",fill:"yellow",align:"right"});
+    chatInputEnd.addChild(chatSubBtn);
+    chatStyle.addChild(chatInputEnd);
+    
+
+
+    stage.addChild(chatStyle);
+
+    chatStyle.visible = false;
+
+    
+//商品-待优化
+    goodsObject();
+    goodsStyle = new Container();
+
+    goodsBar = new PIXI.Sprite(resources.chatbackground.texture);//商品底图
+    goodsStyle.addChild(goodsBar);
+
+    goodsStyle.addChild(itemsGroup);
+
+    let goodsClose = new Sprite(res_mainui["Mooji_Ui_Close_Button.png"]);//商品退出
+    goodsClose.position.x = renderer.width-goodsClose.width-20;
+    goodsClose.interactive = true;
+    goodsClose.buttonMode = true;
+    // goodsClose.click = function(data){//商品-退出事件
+    //   sceneState = pre_sceneState;
+    // }
+    goodsClose.mousedown = function(data){
+      goodsClose.scale.x += 0.1;
+      goodsClose.scale.y += 0.1;
+    }
+    goodsClose.mouseup = function(data){
+      goodsClose.scale.x -= 0.1;
+      goodsClose.scale.y -= 0.1;
+      sceneState = pre_sceneState;
+    }
+    goodsStyle.addChild(goodsClose);
+
+    let goodsTitle = new PIXI.Text("Items",{font:"50px Arial",fill:"yellow"});
+    goodsTitle.position.x = renderer.width/2 - goodsTitle.width/2;
+    goodsStyle.addChild(goodsTitle);
+    stage.addChild(goodsStyle);
+    goodsStyle.visible = false;
+
+
+//uiText-待优化
+    let diamondNum = new PIXI.Text("1000",{font:"20px Arial",fill:"yellow"});
+    diamondNum.position.x = 520;
+    diamondNum.position.y = 25;
+
+    let fightValue = new PIXI.Text("战斗力：50000,59625",{font:"20px Arial",fill:"yellow"});
+    fightValue.position.x = renderer.width/2-fightValue.width/2;
+    fightValue.position.y = 25;
+
+    let foodValue = new PIXI.Text("食物：20.9K",{font:"20px Arial",fill:"yellow"});
+    foodValue.position.x = renderer.width/3-foodValue.width/2;
+    foodValue.position.y = 90;
+
+    let woodValue = new PIXI.Text("木材：80.9K",{font:"20px Arial",fill:"yellow"});
+    woodValue.position.x = renderer.width/1.5-woodValue.width/2;
+    woodValue.position.y = 90;
+
+    let mapValue = new PIXI.Text("Map",{font:"20px Arial",fill:"yellow"});
+    mapValue.position.x = 60-mapValue.width/2;
+    mapValue.position.y = 1110;
+
+    let kingdomValue = new PIXI.Text("kingdom",{font:"20px Arial",fill:"yellow"});
+    kingdomValue.position.x = 580-kingdomValue.width/2;
+    kingdomValue.position.y = 1110;
+
+
+    innerui.addChild(diamondNum);
+    innerui.addChild(lastChat);
+    innerui.addChild(fightValue);
+    innerui.addChild(foodValue);
+    innerui.addChild(woodValue);
+    innerui.addChild(mapValue);
+    innerui.addChild(kingdomValue);
+    
+    loop();
+
+    // renderer.render(stage);
+}
+
+function inner(){
+  innerui.visible = true;
+  city.visible = true;
+  goodsStyle.visible = false;
+  document.getElementById('chatDiv').style.display = "none";
+  world.visible = false;
+  chatStyle.visible = false;
+  contain(background, {x: (renderer.width-background.width), y: (renderer.height-background.height), width: background.width, height: background.height});
+}
+
+function outer(){
+  innerui.visible = true;
+  city.visible = false;
+  world.visible = true;
+  goodsStyle.visible = false;
+  chatStyle.visible = false;
+  document.getElementById('chatDiv').style.display = "none";
+  contain(res_outmap, {x: (renderer.width-res_outmap.width), y: (renderer.height-res_outmap.height), width: res_outmap.width, height: res_outmap.height});
+}
+
+function chat(){
+
+  // scale = scaleToWindow(renderer.view);
+  innerui.visible = false;
+  chatStyle.visible = true;
+  city.visible = false;
+  world.visible = false;
+  document.getElementById('chatDiv').style.display = "";
+  document.getElementById('chatDiv').style.position = "absolute";
+  // relative,absolute
+
+  // console.log(renderer.view);
+  // console.log(renderer.view.getBoundingClientRect());
+  // console.log(renderer.view.style.transform);
+  // console.log(scale);
+
+  //   console.log(renderCanvas.height+"/"+renderCanvas.top+"/"+renderCanvas.y+"===="+(renderer.width/renderCanvas.width));
+  // console.log(renderer.view.style.transform+"========"+scale);
+  // http://bbs.csdn.net/topics/391807741?page=1 *(renderer.width/renderCanvas.width)
+
+  //缩放存在问题--待后续处理
+  let renderCanvas = renderer.view.getBoundingClientRect();
+  document.getElementById('chatDiv').style.left = (renderCanvas.left+chatInputBefore.width)+"px";
+  document.getElementById('chatDiv').style.top = (renderCanvas.height - chatInputBefore.width/2)+"px";
+
+  contain(chatsGroup, {x: 620, y: (renderer.height-chatsGroup.height-320), width: 620, height: chatsGroup.height});
+    
+}
+
+function goods(){
+    innerui.visible = false;
+    goodsStyle.visible = true;
+    chatStyle.visible = false;
+    city.visible = false;
+    world.visible = false;
+    document.getElementById('chatDiv').style.display = "none";
+    contain(itemsGroup, {x: 620, y: (renderer.height-itemsGroup.height-320), width: 620, height: itemsGroup.height});
+    
+}
+
+function play() {
+    if (city.visible){
+      pixie.x += pixie.vx;
+      pixie.y += pixie.vy;
+      contain(pixie, {x: 0, y: 0, width: 4096, height: 4096});
+    }else if(world.visible){
+      pixim.x += pixim.vx;
+      pixim.y += pixim.vy;
+      contain(pixim, {x: 0, y: 0, width: 4096, height: 4096});
+    }
+}
+
+function reset(){
+    //
+}
+
+// function wait(duration = 0){
+//   return new Promise(resolve,reject)=>{
+//     setTimeOut(resolve,duration);
+//   });
+// }
+
+
+function loop() {
+
+    requestAnimationFrame(loop);
+    t.update();
+    sceneState();
+    state();
+    // state = end;
+    renderer.render(stage);
+}
+
+function end(){
+  //  stage.visible = false;
+}
+
+
+
+
+function contain(sprite, container) {
+
+  var collision = undefined;
+
+  //Left
+  if (sprite.x < container.x) {
+    sprite.x = container.x;
+    collision = "left";
+  }
+
+  //Top
+  if (sprite.y < container.y) {
+    sprite.y = container.y;
+    collision = "top";
+  }
+
+  //Right
+  if (sprite.x + sprite.width > container.width) {
+    sprite.x = container.width - sprite.width;
+    collision = "right";
+  }
+
+  //Bottom
+  if (sprite.y + sprite.height > container.height) {
+    sprite.y = container.height - sprite.height;
+    collision = "bottom";
+  }
+
+  //Return the `collision` value
+  return collision;
+}
+
+function addbtnevent(prop,innerBtns){
+  if(prop=="innerBtn_bottom_left"){
+              innerBtn_bottom_left = new Sprite();
+              // addClick(innerBtn_bottom_left,prop);
+              innerBtn_bottom_left.btnName = prop;
+
+              t.makeInteractive(innerBtn_bottom_left);
+
+
+              innerBtn_bottom_left.position.x = btnObj.x;
+              innerBtn_bottom_left.position.y = btnObj.y;
+
+              innerBtn_bottom_left.width = btnObj.width;
+              innerBtn_bottom_left.height = innerBtns[prop].height;
+
+              innerBtn_bottom_left.press =()=>{
+                console.log("sdfj00011:"+innerBtn_bottom_left.btnName);
+              };
+              innerBtn_bottom_left.release =()=>{
+              if (sceneState == inner){
+                sceneState = outer;
+                t.makeDraggable(res_outmap);
+              }else{
+                sceneState = inner;
+                t.makeDraggable(background);
+              }
+
+              };
+
+
+              innerBtn_bottom_left.over=()=>{
+               
+                console.log("over0000:"+ pointer.visible);
+              };
+          }else if(prop=="innerBtn_chat"){
+              innerBtn_chat = new Sprite();
+              innerBtn_chat.btnName = prop;
+              // addClick(innerBtn_chat,prop);
+              t.makeInteractive(innerBtn_chat);
+              innerBtn_chat = new Sprite()
+              innerBtn_chat.over=()=>{
+               
+                console.log("1221231:"+ pointer.visible);
+              };
+          }else if(prop=="innerBtn_bottom_right"){
+              innerBtn_bottom_right = new Sprite();
+              // addClick(innerBtn_bottom_right,prop);
+              innerBtn_bottom_right.btnName = prop;
+              t.makeInteractive(innerBtn_bottom_right);
+
+              innerBtn_bottom_right.position.x = innerBtns[prop].x;
+              innerBtn_bottom_right.position.y = innerBtns[prop].y;
+
+              innerBtn_bottom_right.width = innerBtns[prop].width;
+              innerBtn_bottom_right.height = innerBtns[prop].height;
+
+              innerBtn_bottom_right.press =()=>{
+                console.log("sdfj000:"+innerBtn_bottom_right.btnName);
+              };
+              // innerBtn_bottom_right.release =()=>{
+              //   if (sceneState == inner){
+              //     sceneState = outer;
+              //     t.makeDraggable(res_outmap);
+              //   }else{
+              //     sceneState = inner;
+              //     t.makeDraggable(background);
+              //   }
+
+              // };
+
+
+              innerBtn_bottom_right.over=()=>{
+               
+                console.log("rc0000:"+ pointer.visible);
+              };
+          }
+}
+
+
+function inituis(){
+  $.getJSON('./images/uipositionconfig.json',function(data){
+      uidata = data.innerui;
+  });
+}
+
+function uibtnact(btnObj,prop,buttonInfo){
+  btnObj = new Sprite(res_mainui[prop]);
+  btnObj.btnName = prop;
+  btnObj.position.x = buttonInfo.x;
+  btnObj.position.y = buttonInfo.y;
+  btnevent(btnObj,buttonInfo);
+  innerui.addChild(btnObj);
+}
+
+function changeState(uiName){
+  
+  pre_sceneState = sceneState;
+  if("Mooji_Ui_Map.png"==uiName){
+    if (sceneState == inner){
+      sceneState = outer;
+      t.makeDraggable(res_outmap);
+    }else{
+      sceneState = inner;
+      t.makeDraggable(background);
+    }
+  }else if("Mooji_Ui_Down_Bottom.png"==uiName){
+    sceneState = chat;
+    t.makeDraggable(chatsGroup);
+  }else if("Mooji_Ui_Diamonds.png"==uiName){
+    sceneState = goods;
+    t.makeDraggable(itemsGroup);
+  }
+}
+
+function createbtnrange(btnrange,btnObj,buttonInfo){
+  t.makeInteractive(btnrange);
+  btnrange.position.x = buttonInfo.btnx;
+  btnrange.position.y = buttonInfo.btny;
+  btnrange.width = buttonInfo.btnw;
+  btnrange.height = buttonInfo.btnh;
+  // btnrange.press =()=>{
+  //   console.log("press11ww:"+btnObj.width+btnObj.height);
+  // };
+  btnrange.release =()=>{
+    changeState(btnObj.btnName);
+  };
+
+}
+
+
+function btnevent(btnObj,buttonInfo){
+  if(buttonInfo.postype !=-1){//-1,不处理事件
+    if(buttonInfo.postype == 0){//0，裁剪范围事件
+      this[btnObj.btnName+"event"] = new Sprite();
+      createbtnrange( this[btnObj.btnName+"event"],btnObj,buttonInfo)
+    }else{//sprite，即事件触发
+      btnObj.interactive = true;
+      btnObj.buttonMode = true;
+      // btnObj.click = function(data){//Sprite点击事件
+      //   changeState(btnObj.btnName);
+      // }
+      btnObj.mousedown = function(data){
+        btnObj.scale.x += 0.1;
+        btnObj.scale.y += 0.1;
+      }
+      btnObj.mouseup = function(data){
+        btnObj.scale.x -= 0.1;
+        btnObj.scale.y -= 0.1;
+        changeState(btnObj.btnName);
+      }
+    }
+  }
+}
+
+function chatObject(){
+  chatsGroup = new Container() ;
+  getChats();
+
+  
+}
+
+let chatJosn =  '{"name":"player1w","headimg":"dalier.png","chatmsg":"只是聊会天,有事没事打打仗啦"}';
+function getChats(){
+  let chatInfo = JSON.parse(chatJosn);
+
+  for(let i=1;i<=12;i++){
+
+    let chatContainer = new Container();
+    chatContainer.position.y = 0+i*150;
+
+    let chatHead = new Sprite(res_mainui[chatInfo.headimg]);
+    chatHead.position.x = 0;
+    chatHead.position.y = 0+i*50;
+
+    let chatData = new PIXI.Text(chatInfo.name+"[WAR]",{font:"20px Arial",fill:"white"});
+    chatData.position.x = chatHead.width;
+    chatData.position.y = chatHead.position.y;
+
+    let chatMsg = new PIXI.Text(chatInfo.chatmsg,{font:"15px Arial",fill:"red"});
+    chatMsg.position.x = chatHead.width;
+    chatMsg.position.y = chatHead.position.y+chatData.height*1.5;
+
+    everychat(chatContainer,chatHead,chatData,chatMsg,i);
+
+    if(i==12){//最新聊天
+
+      let chatHeadL = new Sprite(res_mainui[chatInfo.headimg]);
+      lastChat = new Container();
+
+      chatHeadL.scale.x = 0.3;
+      chatHeadL.scale.y = 0.3;
+      lastChat.addChild(chatHeadL);
+
+      let chatDataL = new PIXI.Text(chatInfo.name+"[WAR]",{font:"20px Arial",fill:"black"});
+
+      chatDataL.scale.x = 0.7;
+      chatDataL.scale.y = 0.7;
+      lastChat.addChild(chatDataL);
+      chatDataL.position.x = chatHeadL.width;
+      chatDataL.position.y = chatHeadL.position.y;
+
+      let chatMsgL = new PIXI.Text(chatInfo.chatmsg,{font:"15px Arial",fill:"black"});
+      chatMsgL.scale.x = 0.7;
+      chatMsgL.scale.y = 0.7;
+      lastChat.addChild(chatMsgL);
+
+      chatMsgL.position.x = chatHeadL.width;
+      chatMsgL.position.y = chatHeadL.position.y+chatDataL.height*1.5;
+
+
+      lastChat.position.x = 200;
+      lastChat.position.y = 1020;
+    }
+
+    
+  }
+}
+
+function everychat(chatContainer,chatHead,chatData,chatMsg,i){
+    let rowEnd = new PIXI.Text(i);
+    rowEnd.position.x = 520;
+    rowEnd.position.y = chatData.position.y ;
+    
+    chatContainer.addChild(chatHead);
+    chatContainer.addChild(chatData);
+    chatContainer.addChild(chatMsg);
+    chatContainer.addChild(rowEnd);
+
+    chatsGroup.addChild(chatContainer);
+
+    
+}
+
+function goodsObject(){
+  itemsGroup = new Container() ;
+  getItems();
+}
+
+let itemJosn =  '{"itemname":"20000000金币","itembackimg":"Mooji_Ui_Icon_Iron_Red_Bg125x125.png","itemimg":"Mooji_Ui_Gold5.png","itemmsg":"使用后得金币无数","price":"2000",'
+              +'"pricebackimg":"Mooji_Ui_Btn_Blue_178x64.png",'
+              +'"pricetypeimg":"Mooji_Ui_Diamonds.png"'
+              +'}';
+function getItems(){
+  let itemInfo = JSON.parse(itemJosn);
+
+  for(let i=1;i<=12;i++){
+
+    let itemContainer = new Container();
+    itemContainer.position.y = 0+i*150;
+
+    let itemHead = new Sprite(res_mainui[itemInfo.itembackimg]);
+    let item = new Sprite(res_mainui[itemInfo.itemimg]);
+    itemHead.addChild(item);
+    itemHead.position.x = 0;
+    itemHead.position.y = 0+i*50;
+
+    let itemData = new PIXI.Text(itemInfo.itemname,{font:"20px Arial",fill:"blue"});
+    itemData.position.x = itemHead.width;
+    itemData.position.y = itemHead.position.y;
+
+    let itemMsg = new PIXI.Text(itemInfo.itemmsg,{font:"15px Arial",fill:"grey"});
+    itemMsg.position.x = itemHead.width;
+    itemMsg.position.y = itemHead.position.y+itemData.height*1.5;
+
+
+    let itemPrice = new Sprite(res_mainui[itemInfo.pricebackimg]);
+    let priceType = new Sprite(res_mainui[itemInfo.pricetypeimg]);   
+    let price = new PIXI.Text(itemInfo.price,{font:"20px Arial",fill:"white"});
+    price.position.x = itemPrice.position.x +itemPrice.width/2.5;
+    price.position.y = itemPrice.position.y+itemPrice.height/2.5;
+    itemPrice.addChild(priceType);
+    itemPrice.addChild(price);
+    itemPrice.position.x = renderer.width-itemPrice.width*1.5;
+    itemPrice.position.y = itemHead.position.y+itemData.height*1.5;
+
+    itemPrice.interactive = true;
+    itemPrice.mousedown = function(data){
+        priceType.scale.x += 0.1;
+        priceType.scale.y += 0.1;
+        price.scale.x += 0.1;
+        price.scale.y += 0.1;
+      }
+      itemPrice.mouseup = function(data){
+        priceType.scale.x -= 0.1;
+        priceType.scale.y -= 0.1;
+        price.scale.x -= 0.1;
+        price.scale.y -= 0.1;
+      }
+    
+    everygoods(itemContainer,itemHead,itemData,itemMsg,itemPrice,i);
+  }
+}
+
+function everygoods(itemContainer,itemHead,itemDate,itemMsg,itemPrice,i){
+    let rowLine = new Sprite(res_mainui["Mooji_Dividing_line.png"]);
+    rowLine.position.y = (itemHead.position.y+itemHead.height);
+
+    itemContainer.addChild(itemHead);
+    itemContainer.addChild(itemDate);
+    itemContainer.addChild(itemMsg);
+    itemContainer.addChild(itemPrice);
+    itemContainer.addChild(rowLine);
+
+    itemsGroup.addChild(itemContainer);
+    // itemsGroup.addChild(itemPrice);
+}
+
+
+// function initallbtninfo(){
+//   $.getJSON('./images/innerui.json',function(data){
+//       let layers = data.layers;
+//       for(let i in layers){
+//           let tempLayer = layers[i];
+//           if(tempLayer.name == "btns"){
+//             let tempObjects = tempLayer.objects
+//             for(var j in tempObjects){
+//                 innerBtns[tempObjects[j].name] = tempObjects[j]; 
+//             }
+//           }
+//       }
+
+//   });
+
+//   $.getJSON('./images/outerui.json',function(data){
+//       let layers = data.layers;
+//       for(let i in layers){
+//           let tempLayer = layers[i];
+//           if(tempLayer.name == "btns"){
+//             let tempObjects = tempLayer.objects
+//             for(var j in tempObjects){
+//                 outerBtns[tempObjects[j].name] = tempObjects[j]; 
+//             }
+//           }
+//       }
+
+//   });
+// }
+
+
+
+// function listenrevent(obj){
+
+//   let left = keyboard(37),
+//       up = keyboard(38),
+//       right = keyboard(39),
+//       down = keyboard(40);
+    
+//   left.press = function() {
+//     obj.vx = -5;
+//     obj.vy = 0;
+//     document.getElementById('chat').value="qqq";
+
+//   };
+
+//   left.release = function() {
+//     if (!right.isDown && obj.vy === 0) {
+//       obj.vx = 0;
+//     }
+//   };
+
+//   up.press = function() {
+//     obj.vy = -5;
+//     obj.vx = 0;
+//   };
+//   up.release = function() {
+//     if (!down.isDown && obj.vx === 0) {
+//       obj.vy = 0;
+//     }
+//   };
+
+//   right.press = function() {
+//     obj.vx = 5;
+//     obj.vy = 0;
+//   };
+//   right.release = function() {
+//     if (!left.isDown && obj.vy === 0) {
+//       obj.vx = 0;
+//     }
+//   };
+
+//   down.press = function() {
+//     obj.vy = 5;
+//     obj.vx = 0;
+//   };
+//   down.release = function() {
+//     if (!up.isDown && obj.vx === 0) {
+//       obj.vy = 0;
+//     }
+//   };
+// }
+
+
+// function keyboard(keyCode) {
+//   let key = {};
+//   key.code = keyCode;
+//   key.isDown = false;
+//   key.isUp = true;
+//   key.press = undefined;
+//   key.release = undefined;
+//   //The `downHandler`
+//   key.downHandler = function(event) {
+//     if (event.keyCode === key.code) {
+//       if (key.isUp && key.press) key.press();
+//       key.isDown = true;
+//       key.isUp = false;
+//     }
+//     event.preventDefault();
+//   };
+
+//   //The `upHandler`
+//   key.upHandler = function(event) {
+//     if (event.keyCode === key.code) {
+//       if (key.isDown && key.release) key.release();
+//       key.isDown = false;
+//       key.isUp = true;
+//     }
+//     event.preventDefault();
+//   };
+
+//   //Attach event listeners
+//   window.addEventListener(
+//     "keydown", key.downHandler.bind(key), false
+//   );
+//   window.addEventListener(
+//     "keyup", key.upHandler.bind(key), false
+//   );
+//   return key;
+// }
+
+
+
+</script>
+
+<style>
+.input_search { width:399px;  border:0px;  font-size:19px; color:white; background:transparent; }
+</style>
+
+<div id="chatDiv" style="display:">
+<font color="yellow">INPUT:</font><input  id="chatInput" class="input_search"  maxlength="140">
+</div>
+
+
+
+
+</body>
