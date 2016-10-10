@@ -99,7 +99,7 @@
             <key>packageName</key>
             <string>Texture</string>
             <key>javaFileName</key>
-            <filename>../../../zoomPixi/images/mainui.java</filename>
+            <filename>../mainui.java</filename>
             <key>wrap</key>
             <struct type="AndEngineWrap">
                 <key>s</key>
@@ -194,6 +194,7 @@
             <filename>../pic/Mooji_Ui_Icon_Iron_Red_Bg125x125.png</filename>
             <filename>../pic/Mooji_Ui_Icon_Iron_White_Bg125x125.png</filename>
             <filename>../pic/Mooji_Dividing_line.png</filename>
+            <filename>../../../../../moojiall/Mooji_Ui_Btn_Yellow_80x78.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

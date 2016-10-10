@@ -90,23 +90,150 @@
                 "y": 210
             }
         }
+        
+    },
+    "innertext": {
+        "layer0": {
+            "diamondNum": {
+                "postype": 0,
+                "x": 520,
+                "y": 25,
+                "fontsize":"20px Arial",
+                "text":"0",
+                "fill":"yellow"
+            
+            },
+             "fightValue": {
+                "postype": 0,
+                "x": 0,
+                "y": 25,
+                "fontsize":"20px Arial",
+                "text":"战斗力：50000,59625",
+                "fill":"yellow"
+            
+            },
+            "foodValue": {
+                "postype": 0,
+                "x": 0,
+                "y": 90,
+                "fontsize":"20px Arial",
+                "text":"食物：20.9K",
+                "fill":"yellow"
+            
+            },
+            "woodValue": {
+                "postype": 0,
+                "x": 0,
+                "y": 90,
+                "fontsize":"20px Arial",
+                "text":"木材：80.9K",
+                "fill":"yellow"
+            
+            },
+            "mapValue": {
+                "postype": 0,
+                "x": 0,
+                "y": 1110,
+                "fontsize":"20px Arial",
+                "text":"Map",
+                "fill":"yellow"
+            
+            },
+            "kingdomValue": {
+                "postype": 0,
+                "x": 0,
+                "y":1110,
+                "fontsize":"20px Arial",
+                "text":"kingdom",
+                "fill":"yellow"
+            
+            }
+        }
     },
     "chat": {
         "layer0": {
             "Mooji_Kraft_Paper_Bottom.png": {
-                "postype": 0,
-                "x": 0,
-                "y": 1010,
-                "btnx":135,
-                "btny":1010,
-                "btnw":360,
-                "btnh":128
-            },
-			"Mooji_Ui_Up_Bottom_Iron.png": {
                 "postype": -1,
                 "x": 0,
-                "y": 0
+                "y": 0,
+                "btnname":"Mooji_Kraft_Paper_Bottom"
+            },
+			"Mooji_Ui_Eject_Frame1.png": {
+                "postype": -1,
+                "x": 0,
+                "y": 165,
+                "btnname":"Mooji_Ui_Eject_Frame1"
             }
+            
+        },
+        "layer1": {
+            "chatLimit": {
+                "postype": 8,
+                "x": 0,
+                "y": 0,
+                "btnname":"chatLimit"
+            },
+			"Mooji_Black_Dark_Bottom1.png": {
+                "postype": 0,
+                "x": 0,
+                "y": 0,
+                "btnname":"Mooji_Black_Dark_Bottom1"
+            }
+        },
+        "layer2": {
+            
+            "Mooji_Ui_Up_Bottom_Iron.png": {
+                "postype": -1,
+                "x": 0,
+                "y": 0,
+                "btnname":"Mooji_Ui_Up_Bottom_Iron"
+            },
+            "Mooji_Ui_Close_Button.png": {
+                "postype": 0,
+                "x": 0,
+                "y": 0,
+                "btnname":"Mooji_Ui_Close_Button"
+            },
+            "chatValue": {
+                "postype": 9,
+                "x": 0,
+                "y":20,
+                "fontsize":"30px Arial",
+                "text":"Chat",
+                "fill":"yellow",
+                "btnname":"chatValue"
+            },
+            "Mooji_Buttom_F1_434X62.png": {
+                "postype": -1,
+                "x": 0,
+                "y": 0,
+                "btnname":"Mooji_Buttom_F1_434X62"
+            },
+            "Mooji_Ui_Btn_Blue_80x78.png": {
+                "postype": -1,
+                "x": 0,
+                "y": 0,
+                "btnname":"Mooji_Ui_Btn_Blue_80x78"
+            },
+            "Mooji_Ui_Btn_Yellow_80x78.png": {
+                "postype": 0,
+                "x": 100,
+                "y": 0,
+                "btnname":"Mooji_Ui_Btn_Yellow_80x78"
+            },
+             "chatSubValue": {
+                "postype": 9,
+                "x": 0,
+                "y":0,
+                "fontsize":"20px Arial",
+                "text":"发送",
+                "fill":"blue",
+                "btnname":"chatSubValue"
+            }
+            
+
+            
+            
         }
     }
 }

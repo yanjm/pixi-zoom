@@ -10,7 +10,7 @@
 },
 "Mooji_Buttom_F1_434X62.png":
 {
-	"frame": {"x":2,"y":66,"w":434,"h":62},
+	"frame": {"x":725,"y":2,"w":434,"h":62},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":434,"h":62},
@@ -18,7 +18,7 @@
 },
 "Mooji_Buttom_white.png":
 {
-	"frame": {"x":803,"y":2,"w":434,"h":62},
+	"frame": {"x":2,"y":66,"w":434,"h":62},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":434,"h":62},
@@ -34,7 +34,7 @@
 },
 "Mooji_Icon_Recruit.png":
 {
-	"frame": {"x":953,"y":272,"w":525,"h":138},
+	"frame": {"x":994,"y":272,"w":525,"h":138},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":525,"h":138},
@@ -58,7 +58,7 @@
 },
 "Mooji_Ui_Alliance_Icon.png":
 {
-	"frame": {"x":1177,"y":146,"w":121,"h":106},
+	"frame": {"x":1128,"y":146,"w":121,"h":106},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":121,"h":106},
@@ -74,15 +74,23 @@
 },
 "Mooji_Ui_Btn_Blue_80x78.png":
 {
-	"frame": {"x":2,"y":146,"w":80,"h":78},
+	"frame": {"x":73,"y":146,"w":80,"h":78},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":80,"h":78},
 	"sourceSize": {"w":80,"h":78}
 },
+"Mooji_Ui_Btn_Yellow_80x78.png":
+{
+	"frame": {"x":1221,"y":66,"w":80,"h":75},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":80,"h":75},
+	"sourceSize": {"w":80,"h":75}
+},
 "Mooji_Ui_Button.png":
 {
-	"frame": {"x":968,"y":66,"w":137,"h":72},
+	"frame": {"x":1031,"y":66,"w":137,"h":72},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":137,"h":72},
@@ -90,7 +98,7 @@
 },
 "Mooji_Ui_Button_Recharge.png":
 {
-	"frame": {"x":1379,"y":66,"w":69,"h":78},
+	"frame": {"x":2,"y":146,"w":69,"h":78},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":69,"h":78},
@@ -98,7 +106,7 @@
 },
 "Mooji_Ui_Button_Recharge_Big.png":
 {
-	"frame": {"x":814,"y":146,"w":113,"h":96},
+	"frame": {"x":885,"y":146,"w":113,"h":96},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":113,"h":96},
@@ -106,7 +114,7 @@
 },
 "Mooji_Ui_Button_Recharge_Big1.png":
 {
-	"frame": {"x":1440,"y":146,"w":139,"h":124},
+	"frame": {"x":2,"y":272,"w":139,"h":124},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":139,"h":124},
@@ -114,7 +122,7 @@
 },
 "Mooji_Ui_Button_Recharge_Big2.png":
 {
-	"frame": {"x":1300,"y":146,"w":138,"h":121},
+	"frame": {"x":1251,"y":146,"w":138,"h":121},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":138,"h":121},
@@ -122,7 +130,7 @@
 },
 "Mooji_Ui_Close_Button.png":
 {
-	"frame": {"x":1221,"y":66,"w":77,"h":76},
+	"frame": {"x":1303,"y":66,"w":77,"h":76},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":77,"h":76},
@@ -138,7 +146,7 @@
 },
 "Mooji_Ui_Diamonds_Green1.png":
 {
-	"frame": {"x":725,"y":2,"w":76,"h":62},
+	"frame": {"x":1161,"y":2,"w":76,"h":62},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":26,"y":33,"w":76,"h":62},
@@ -146,7 +154,7 @@
 },
 "Mooji_Ui_Down_Bottom.png":
 {
-	"frame": {"x":201,"y":272,"w":640,"h":128},
+	"frame": {"x":242,"y":272,"w":640,"h":128},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":640,"h":128},
@@ -168,17 +176,9 @@
 	"spriteSourceSize": {"x":35,"y":2,"w":174,"h":236},
 	"sourceSize": {"w":240,"h":240}
 },
-"Mooji_Ui_Gold5.png":
-{
-	"frame": {"x":929,"y":146,"w":118,"h":98},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":3,"y":21,"w":118,"h":98},
-	"sourceSize": {"w":128,"h":128}
-},
 "Mooji_Ui_Guild_Number_Bottom3.png":
 {
-	"frame": {"x":1450,"y":66,"w":77,"h":78},
+	"frame": {"x":1461,"y":66,"w":77,"h":78},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":77,"h":78},
@@ -186,7 +186,7 @@
 },
 "Mooji_Ui_Head_Background2.png":
 {
-	"frame": {"x":843,"y":272,"w":108,"h":137},
+	"frame": {"x":884,"y":272,"w":108,"h":137},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":137},
@@ -194,7 +194,7 @@
 },
 "Mooji_Ui_Head_Rufus_Partly_BT.png":
 {
-	"frame": {"x":102,"y":272,"w":97,"h":125},
+	"frame": {"x":143,"y":272,"w":97,"h":125},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":11,"y":8,"w":97,"h":125},
@@ -202,7 +202,7 @@
 },
 "Mooji_Ui_Hero_Hat.png":
 {
-	"frame": {"x":781,"y":66,"w":108,"h":71},
+	"frame": {"x":858,"y":66,"w":108,"h":71},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":71},
@@ -210,7 +210,7 @@
 },
 "Mooji_Ui_Icon.png":
 {
-	"frame": {"x":84,"y":146,"w":86,"h":86},
+	"frame": {"x":155,"y":146,"w":86,"h":86},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":86,"h":86},
@@ -218,7 +218,7 @@
 },
 "Mooji_Ui_Icon_Bt_Barrel.png":
 {
-	"frame": {"x":1107,"y":66,"w":61,"h":72},
+	"frame": {"x":968,"y":66,"w":61,"h":72},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":61,"h":72},
@@ -226,7 +226,7 @@
 },
 "Mooji_Ui_Icon_Globe_128X128.png":
 {
-	"frame": {"x":2,"y":272,"w":98,"h":124},
+	"frame": {"x":1391,"y":146,"w":98,"h":124},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":11,"y":1,"w":98,"h":124},
@@ -314,7 +314,7 @@
 },
 "Mooji_Ui_Map.png":
 {
-	"frame": {"x":1049,"y":146,"w":126,"h":98},
+	"frame": {"x":1000,"y":146,"w":126,"h":98},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":126,"h":98},
@@ -330,7 +330,7 @@
 },
 "Mooji_Ui_Prompt.png":
 {
-	"frame": {"x":891,"y":66,"w":75,"h":71},
+	"frame": {"x":781,"y":66,"w":75,"h":71},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":71},
@@ -346,7 +346,7 @@
 },
 "Mooji_Ui_Return_Button.png":
 {
-	"frame": {"x":1300,"y":66,"w":77,"h":76},
+	"frame": {"x":1382,"y":66,"w":77,"h":76},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":77,"h":76},
@@ -370,7 +370,7 @@
 },
 "Mooji_Ui_Up_Bottom_Iron.png":
 {
-	"frame": {"x":172,"y":146,"w":640,"h":89},
+	"frame": {"x":243,"y":146,"w":640,"h":89},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":640,"h":89},
@@ -397,8 +397,8 @@
 	"version": "1.0",
 	"image": "mainui.png",
 	"format": "RGBA8888",
-	"size": {"w":1581,"h":1891},
+	"size": {"w":1559,"h":1891},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:69794ec997d87070ec402197c58c5d3d$"
+	"smartupdate": "$TexturePacker:SmartUpdate:a018f22653bc2c08fb816e11171f2dfb$"
 }
 }
