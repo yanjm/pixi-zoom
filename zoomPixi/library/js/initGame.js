@@ -1,6 +1,4 @@
 
-
-
 function contain(sprite, container) {
 
   var collision = undefined;
@@ -41,8 +39,6 @@ function inituis(){
       itemdata = data.item;
   });
 }
-
-
 
 //内城功能，ui,布局函数
 function initInnerSceneUI(){
@@ -118,7 +114,6 @@ function initInnerSceneUI(){
 
 }
 
-
 //世界地图功能，ui,布局函数
 function initOuterSceneUI(){
     world.addChild(res_outmap);
@@ -178,7 +173,6 @@ function initChatUI(){
       }
     }
     
-    
     chatLimit.height = renderer.height;
     chatsGroup.position.y = -(chatsGroup.height+renderer.height);
     chatLimit.addChild(chatsGroup);
@@ -204,15 +198,12 @@ function initChatUI(){
     Mooji_Black_Dark_Bottom1.position.y = Mooji_Ui_Up_Bottom_Iron.height-20;
     Mooji_Black_Dark_Bottom1.position.x = -10;
     Mooji_Black_Dark_Bottom1.scale.x = 1.5;
-    // chatStyle.addChild(chatBar2);
-
 
     Mooji_Ui_Btn_Blue_80x78.position.y = renderer.height-Mooji_Ui_Btn_Blue_80x78.height;
 
     Mooji_Buttom_F1_434X62.position.y = Mooji_Ui_Btn_Blue_80x78.position.y+5;
     Mooji_Buttom_F1_434X62.scale.x = 2;
     Mooji_Buttom_F1_434X62.scale.y = 1.1;
-
 
     Mooji_Ui_Btn_Yellow_80x78.position.x = renderer.width - Mooji_Ui_Btn_Yellow_80x78.width;
     Mooji_Ui_Btn_Yellow_80x78.position.y = Mooji_Ui_Btn_Blue_80x78.position.y;
@@ -236,7 +227,6 @@ function initChatUI(){
     chatSubValue.position.y = Mooji_Ui_Btn_Yellow_80x78.position.y + chatSubValue.width/1.7;
     chatSubValue.position.x = Mooji_Ui_Btn_Yellow_80x78.position.x + chatSubValue.height/1.5;
 }
-
 
 //商店功能，UI，布局函数
 function initItemUI(){
@@ -276,7 +266,6 @@ function initItemUI(){
     item_Mooji_Black_Dark_Bottom1.scale.x = 1.5;
 
 }
-
 
 function uibtnact(btnObj,prop,buttonInfo){
   btnObj = new Sprite(res_mainui[prop]);
@@ -365,7 +354,6 @@ function createbtnrange(btnrange,btnObj,buttonInfo){
 
 }
 
-
 function btnevent(btnObj,buttonInfo){
   if(buttonInfo.postype !=-1){//-1,不处理事件
     if(buttonInfo.postype == 0){//0，裁剪范围事件
@@ -376,9 +364,6 @@ function btnevent(btnObj,buttonInfo){
     }else{//sprite，即事件触发
       btnObj.interactive = true;
       btnObj.buttonMode = true;
-      // btnObj.click = function(data){//Sprite点击事件
-      //   changeState(btnObj.btnName);
-      // }
       btnObj.mousedown = function(data){
         btnObj.scale.x += 0.1;
         btnObj.scale.y += 0.1;
@@ -446,11 +431,9 @@ function getChats(){
       chatMsgL.position.x = chatHeadL.width;
       chatMsgL.position.y = chatHeadL.position.y+chatDataL.height*1.5;
 
-
       lastChat.position.x = 200;
       lastChat.position.y = 1020;
     }
-
     
   }
 }
@@ -466,7 +449,6 @@ function everychat(chatContainer,chatHead,chatData,chatMsg,i){
     chatContainer.addChild(rowEnd);
 
     chatsGroup.addChild(chatContainer);
-
     
 }
 
@@ -500,7 +482,6 @@ function getItems(){
     let itemMsg = new PIXI.Text(itemInfo.itemmsg,{fontSize:"15px Arial",fill:"green"});
     itemMsg.position.x = itemHead.width;
     itemMsg.position.y = itemHead.position.y+itemData.height*1.5;
-
 
     let itemPrice = new Sprite(res_mainui[itemInfo.pricebackimg]);
     let priceType = new Sprite(res_mainui[itemInfo.pricetypeimg]);   
@@ -541,41 +522,7 @@ function everygoods(itemContainer,itemHead,itemDate,itemMsg,itemPrice,i){
     itemContainer.addChild(rowLine);
 
     itemsGroup.addChild(itemContainer);
-    // itemsGroup.addChild(itemPrice);
 }
-
-
-// function initallbtninfo(){
-//   $.getJSON('./images/innerui.json',function(data){
-//       let layers = data.layers;
-//       for(let i in layers){
-//           let tempLayer = layers[i];
-//           if(tempLayer.name == "btns"){
-//             let tempObjects = tempLayer.objects
-//             for(var j in tempObjects){
-//                 innerBtns[tempObjects[j].name] = tempObjects[j]; 
-//             }
-//           }
-//       }
-
-//   });
-
-//   $.getJSON('./images/outerui.json',function(data){
-//       let layers = data.layers;
-//       for(let i in layers){
-//           let tempLayer = layers[i];
-//           if(tempLayer.name == "btns"){
-//             let tempObjects = tempLayer.objects
-//             for(var j in tempObjects){
-//                 outerBtns[tempObjects[j].name] = tempObjects[j]; 
-//             }
-//           }
-//       }
-
-//   });
-// }
-
-
 
 function listenrevent(obj){
 
@@ -626,10 +573,7 @@ function listenrevent(obj){
       obj.vy = 0;
     }
   };
-
-  
 }
-
 
 function keyboard(keyCode,obj) {
   let key = {};

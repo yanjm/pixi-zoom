@@ -141,48 +141,8 @@ function setup() {
 
     
 //商品-待优化
-    
-
-
-
-
     itemStyle = new Container();
     initItemUI();
-    
-    // for(let layername in itemdata){
-    //   let layer = itemdata[layername]
-    //   for(let prop in layer){
-    //       itemact(this[prop],prop,layer[prop]);
-    //   }
-    // }
-
-    // goodsBar = new PIXI.Sprite(resources.chatbackground.texture);//商品底图
-    // itemStyle.addChild(goodsBar);
-
-    // itemStyle.addChild(itemsGroup);
-    // itemsGroup.position.y = 40;
-
-    // let goodsClose = new Sprite(res_mainui["Mooji_Ui_Close_Button.png"]);//商品退出
-    // goodsClose.position.x = renderer.width-goodsClose.width-20;
-    // goodsClose.interactive = true;
-    // goodsClose.buttonMode = true;
-    // // goodsClose.click = function(data){//商品-退出事件
-    // //   sceneState = pre_sceneState;
-    // // }
-    // goodsClose.mousedown = function(data){
-    //   goodsClose.scale.x += 0.1;
-    //   goodsClose.scale.y += 0.1;
-    // }
-    // goodsClose.mouseup = function(data){
-    //   goodsClose.scale.x -= 0.1;
-    //   goodsClose.scale.y -= 0.1;
-    //   sceneState = pre_sceneState;
-    // }
-    // itemStyle.addChild(goodsClose);
-
-    // let goodsTitle = new PIXI.Text("Items",{fontSize:"50px Arial",fill:"yellow"});
-    // goodsTitle.position.x = renderer.width/2 - goodsTitle.width/2;
-    // itemStyle.addChild(goodsTitle);
     stage.addChild(itemStyle);
     itemStyle.visible = false;
 
@@ -228,6 +188,8 @@ function outer(){
 }
 
 function chat(){
+
+  let lop = scaleToWindow(renderer.view);
   innerui.visible = false;
   chatStyle.visible = true;
   city.visible = false;
@@ -238,25 +200,22 @@ function chat(){
   document.getElementById('chatDiv').style.position = "absolute";
   // relative,absolute
 
-  // console.log(renderer.view);
+
   // console.log(renderer.view.getBoundingClientRect());
   // console.log(renderer.view.style.transform);
-  // console.log(scale);
-
   //   console.log(renderCanvas.height+"/"+renderCanvas.top+"/"+renderCanvas.y+"===="+(renderer.width/renderCanvas.width));
   // console.log(renderer.view.style.transform+"========"+scale);
   // http://bbs.csdn.net/topics/391807741?page=1 *(renderer.width/renderCanvas.width)
-
-  //缩放存在问题--待后续处理
+  //缩放处理
+  // http://www.jb51.net/article/41793.htm
   let renderCanvas = renderer.view.getBoundingClientRect();
-  // document.getElementById('chatDiv').style.left = (renderCanvas.left+chatInputBefore.width)+"px";
-  // document.getElementById('chatDiv').style.top = (renderCanvas.height - chatInputBefore.width/2)+"px";
-
-  document.getElementById('chatDiv').style.left = 100+"px";
-  document.getElementById('chatDiv').style.top = 1038+"px";
-
+  document.getElementById('chatDiv').style.left = (renderCanvas.left+Mooji_Ui_Btn_Blue_80x78.height*lop*1.2)+"px";
+  // document.getElementById('chatDiv').style.top = (renderCanvas.height + renderCanvas.top)+"px";
+  document.getElementById('chatDiv').style.top = (renderer.view.offsetTop+renderer.view.height*lop-Mooji_Ui_Btn_Blue_80x78.height*lop/1.2) +"px";
+  // document.getElementById('chatInput').style.transform  = renderer.view.style.transform;
+  document.getElementById('chatInput').style.width  = 450*lop+"px";
+  document.getElementById('chatInput').style.fontSize  = 19*lop+"px";
   contain(chatsGroup, {x: 620, y: (renderer.height-chatsGroup.height-320), width: 620, height: chatsGroup.height+320});
-    
 }
 
 function goods(){
@@ -276,9 +235,9 @@ function play() {
     if (city.visible){
 
       if (innerSel){
-      innerSel.x += innerSel.vx;
-      innerSel.y += innerSel.vy;
-      contain(innerSel, {x: 0, y: 0, width: 4096, height: 4096});
+        innerSel.x += innerSel.vx;
+        innerSel.y += innerSel.vy;
+        contain(innerSel, {x: 0, y: 0, width: 4096, height: 4096});
       }
     }else if(world.visible){
       pixim.x += pixim.vx;
@@ -301,19 +260,15 @@ function reset(){
 //   });
 // }
 
-
-
-
-
-
 </script>
 
 <style>
-.input_search { width:399px;  border:0px;  font-size:19px; color:white; background:transparent; }
+.input_search { width:450px;  border:0px;  font-size:19px; color:white; background:transparent; }
 </style>
 
 <div id="chatDiv" style="display:">
-<font color="yellow">INPUT:</font><input  id="chatInput" class="input_search"  maxlength="140">
+<!--<font color="yellow">INPUT:</font>-->
+<input  id="chatInput" class="input_search"  maxlength="140">
 </div>
 
 
