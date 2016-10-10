@@ -38,6 +38,7 @@ function inituis(){
       uidata = data.innerui;
       uitextdate = data.innertext;
       chatdata = data.chat;
+      itemdata = data.item;
   });
 }
 
@@ -237,6 +238,46 @@ function initChatUI(){
 }
 
 
+//商店功能，UI，布局函数
+function initItemUI(){
+  
+    itemObject();
+    for(let layername in itemdata){
+      let layer = itemdata[layername]
+      for(let prop in layer){
+          itemact(this[prop],prop,layer[prop]);
+      }
+    }
+    
+    item_chatLimit.height = renderer.height;
+    chatsGroup.position.y = -(chatsGroup.height+renderer.height);
+    item_chatLimit.addChild(itemsGroup);
+    //退出按钮
+    item_Mooji_Ui_Close_Button.position.x = renderer.width-Mooji_Ui_Close_Button.width-20;
+    item_Mooji_Ui_Close_Button.interactive = true;
+    item_Mooji_Ui_Close_Button.buttonMode = true;
+    item_Mooji_Ui_Close_Button.mousedown = function(data){
+      item_Mooji_Ui_Close_Button.scale.x += 0.1;
+      item_Mooji_Ui_Close_Button.scale.y += 0.1;
+    }
+    item_Mooji_Ui_Close_Button.mouseup = function(data){
+      item_Mooji_Ui_Close_Button.scale.x -= 0.1;
+      item_Mooji_Ui_Close_Button.scale.y -= 0.1;
+      
+      sceneState = pre_sceneState;
+    }
+    //标题文字
+    item_chatValue.position.x = renderer.width/2 - chatValue.width/2;
+    //标题背景
+    item_Mooji_Ui_Eject_Frame1.scale.y = 1.3;
+    //遮挡板
+    item_Mooji_Black_Dark_Bottom1.position.y = item_Mooji_Ui_Up_Bottom_Iron.height-20;
+    item_Mooji_Black_Dark_Bottom1.position.x = -10;
+    item_Mooji_Black_Dark_Bottom1.scale.x = 1.5;
+
+}
+
+
 function uibtnact(btnObj,prop,buttonInfo){
   btnObj = new Sprite(res_mainui[prop]);
   btnObj.btnName = prop;
@@ -261,10 +302,25 @@ function chatact(btnObj,prop,buttonInfo){
     this[buttonInfo.btnname].position.x = buttonInfo.x;
     this[buttonInfo.btnname].position.y = buttonInfo.y;
   }
-
-
-
   chatStyle.addChild(this[buttonInfo.btnname]);
+}
+
+function itemact(btnObj,prop,buttonInfo){
+
+  if(buttonInfo.postype==8){
+    this[buttonInfo.btnname] = new Container();
+  }
+  else if(buttonInfo.postype==9){
+    this[buttonInfo.btnname] = new PIXI.Text(buttonInfo.text,{fontSize:buttonInfo.fontsize,fill:buttonInfo.fill});
+    this[buttonInfo.btnname].position.x = buttonInfo.x;
+    this[buttonInfo.btnname].position.y = buttonInfo.y;
+  }
+  else{
+    this[buttonInfo.btnname] = new Sprite(res_mainui[prop]);
+    this[buttonInfo.btnname].position.x = buttonInfo.x;
+    this[buttonInfo.btnname].position.y = buttonInfo.y;
+  }
+  itemStyle.addChild(this[buttonInfo.btnname]);
 }
 
 function uitextact(btnObj,prop,buttonInfo){
@@ -414,7 +470,7 @@ function everychat(chatContainer,chatHead,chatData,chatMsg,i){
     
 }
 
-function goodsObject(){
+function itemObject(){
   itemsGroup = new Container() ;
   getItems();
 }
@@ -441,7 +497,7 @@ function getItems(){
     itemData.position.x = itemHead.width;
     itemData.position.y = itemHead.position.y;
 
-    let itemMsg = new PIXI.Text(itemInfo.itemmsg,{fontSize:"15px Arial",fill:"grey"});
+    let itemMsg = new PIXI.Text(itemInfo.itemmsg,{fontSize:"15px Arial",fill:"green"});
     itemMsg.position.x = itemHead.width;
     itemMsg.position.y = itemHead.position.y+itemData.height*1.5;
 

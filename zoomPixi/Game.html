@@ -141,38 +141,50 @@ function setup() {
 
     
 //商品-待优化
-    goodsObject();
-    goodsStyle = new Container();
+    
 
-    goodsBar = new PIXI.Sprite(resources.chatbackground.texture);//商品底图
-    goodsStyle.addChild(goodsBar);
 
-    goodsStyle.addChild(itemsGroup);
-    itemsGroup.position.y = 40;
 
-    let goodsClose = new Sprite(res_mainui["Mooji_Ui_Close_Button.png"]);//商品退出
-    goodsClose.position.x = renderer.width-goodsClose.width-20;
-    goodsClose.interactive = true;
-    goodsClose.buttonMode = true;
-    // goodsClose.click = function(data){//商品-退出事件
+
+    itemStyle = new Container();
+    initItemUI();
+    
+    // for(let layername in itemdata){
+    //   let layer = itemdata[layername]
+    //   for(let prop in layer){
+    //       itemact(this[prop],prop,layer[prop]);
+    //   }
+    // }
+
+    // goodsBar = new PIXI.Sprite(resources.chatbackground.texture);//商品底图
+    // itemStyle.addChild(goodsBar);
+
+    // itemStyle.addChild(itemsGroup);
+    // itemsGroup.position.y = 40;
+
+    // let goodsClose = new Sprite(res_mainui["Mooji_Ui_Close_Button.png"]);//商品退出
+    // goodsClose.position.x = renderer.width-goodsClose.width-20;
+    // goodsClose.interactive = true;
+    // goodsClose.buttonMode = true;
+    // // goodsClose.click = function(data){//商品-退出事件
+    // //   sceneState = pre_sceneState;
+    // // }
+    // goodsClose.mousedown = function(data){
+    //   goodsClose.scale.x += 0.1;
+    //   goodsClose.scale.y += 0.1;
+    // }
+    // goodsClose.mouseup = function(data){
+    //   goodsClose.scale.x -= 0.1;
+    //   goodsClose.scale.y -= 0.1;
     //   sceneState = pre_sceneState;
     // }
-    goodsClose.mousedown = function(data){
-      goodsClose.scale.x += 0.1;
-      goodsClose.scale.y += 0.1;
-    }
-    goodsClose.mouseup = function(data){
-      goodsClose.scale.x -= 0.1;
-      goodsClose.scale.y -= 0.1;
-      sceneState = pre_sceneState;
-    }
-    goodsStyle.addChild(goodsClose);
+    // itemStyle.addChild(goodsClose);
 
-    let goodsTitle = new PIXI.Text("Items",{fontSize:"50px Arial",fill:"yellow"});
-    goodsTitle.position.x = renderer.width/2 - goodsTitle.width/2;
-    goodsStyle.addChild(goodsTitle);
-    stage.addChild(goodsStyle);
-    goodsStyle.visible = false;
+    // let goodsTitle = new PIXI.Text("Items",{fontSize:"50px Arial",fill:"yellow"});
+    // goodsTitle.position.x = renderer.width/2 - goodsTitle.width/2;
+    // itemStyle.addChild(goodsTitle);
+    stage.addChild(itemStyle);
+    itemStyle.visible = false;
 
 
 //uiText
@@ -196,7 +208,7 @@ function loop() {
 function inner(){
   innerui.visible = true;
   city.visible = true;
-  goodsStyle.visible = false;
+  itemStyle.visible = false;
   background.draggable  = true;
   document.getElementById('chatDiv').style.display = "none";
   world.visible = false;
@@ -208,7 +220,7 @@ function outer(){
   innerui.visible = true;
   city.visible = false;
   world.visible = true;
-  goodsStyle.visible = false;
+  itemStyle.visible = false;
   chatStyle.visible = false;
   res_outmap.draggable  = true;
   document.getElementById('chatDiv').style.display = "none";
@@ -249,7 +261,7 @@ function chat(){
 
 function goods(){
     innerui.visible = false;
-    goodsStyle.visible = true;
+    itemStyle.visible = true;
     chatStyle.visible = false;
     city.visible = false;
     world.visible = false;

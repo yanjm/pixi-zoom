@@ -195,6 +195,7 @@
             <filename>../pic/Mooji_Ui_Icon_Iron_White_Bg125x125.png</filename>
             <filename>../pic/Mooji_Dividing_line.png</filename>
             <filename>../../../../../moojiall/Mooji_Ui_Btn_Yellow_80x78.png</filename>
+            <filename>../pic/Mooji_Ui_Gold5.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

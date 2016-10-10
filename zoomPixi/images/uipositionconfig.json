@@ -235,5 +235,62 @@
             
             
         }
+        
+    },
+    "item": {
+        "layer0": {
+            "Mooji_Kraft_Paper_Bottom.png": {
+                "postype": -1,
+                "x": 0,
+                "y": 0,
+                "btnname":"item_Mooji_Kraft_Paper_Bottom"
+            },
+			"Mooji_Ui_Eject_Frame1.png": {
+                "postype": -1,
+                "x": 0,
+                "y": 105,
+                "btnname":"item_Mooji_Ui_Eject_Frame1"
+            }
+            
+        },
+        "layer1": {
+            "chatLimit": {
+                "postype": 8,
+                "x": 0,
+                "y": 0,
+                "btnname":"item_chatLimit"
+            },
+			"Mooji_Black_Dark_Bottom1.png": {
+                "postype": 0,
+                "x": 0,
+                "y": 0,
+                "btnname":"item_Mooji_Black_Dark_Bottom1"
+            }
+        },
+        "layer2": {
+            
+            "Mooji_Ui_Up_Bottom_Iron.png": {
+                "postype": -1,
+                "x": 0,
+                "y": 0,
+                "btnname":"item_Mooji_Ui_Up_Bottom_Iron"
+            },
+            "Mooji_Ui_Close_Button.png": {
+                "postype": 0,
+                "x": 0,
+                "y": 0,
+                "btnname":"item_Mooji_Ui_Close_Button"
+            },
+            "chatValue": {
+                "postype": 9,
+                "x": 0,
+                "y":20,
+                "fontsize":"30px Arial",
+                "text":"Item",
+                "fill":"yellow",
+                "btnname":"item_chatValue"
+            }   
+            
+        }
     }
 }

@@ -2,7 +2,7 @@
 
 "Mooji_Black_Dark_Bottom1.png":
 {
-	"frame": {"x":964,"y":555,"w":593,"h":194},
+	"frame": {"x":2,"y":815,"w":593,"h":194},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":593,"h":194},
@@ -10,7 +10,7 @@
 },
 "Mooji_Buttom_F1_434X62.png":
 {
-	"frame": {"x":725,"y":2,"w":434,"h":62},
+	"frame": {"x":561,"y":270,"w":434,"h":62},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":434,"h":62},
@@ -18,7 +18,7 @@
 },
 "Mooji_Buttom_white.png":
 {
-	"frame": {"x":2,"y":66,"w":434,"h":62},
+	"frame": {"x":997,"y":270,"w":434,"h":62},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":434,"h":62},
@@ -26,7 +26,7 @@
 },
 "Mooji_Dividing_line.png":
 {
-	"frame": {"x":2,"y":2,"w":539,"h":6},
+	"frame": {"x":2,"y":508,"w":539,"h":6},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":539,"h":6},
@@ -34,7 +34,7 @@
 },
 "Mooji_Icon_Recruit.png":
 {
-	"frame": {"x":994,"y":272,"w":525,"h":138},
+	"frame": {"x":543,"y":508,"w":525,"h":138},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":525,"h":138},
@@ -42,7 +42,7 @@
 },
 "Mooji_Kraft_Paper_Bottom.png":
 {
-	"frame": {"x":807,"y":751,"w":640,"h":1138},
+	"frame": {"x":1226,"y":815,"w":640,"h":1138},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":640,"h":1138},
@@ -50,7 +50,7 @@
 },
 "Mooji_The_Chest.png":
 {
-	"frame": {"x":618,"y":66,"w":94,"h":66},
+	"frame": {"x":992,"y":2,"w":94,"h":66},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":94,"h":66},
@@ -58,7 +58,7 @@
 },
 "Mooji_Ui_Alliance_Icon.png":
 {
-	"frame": {"x":1128,"y":146,"w":121,"h":106},
+	"frame": {"x":130,"y":129,"w":121,"h":106},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":121,"h":106},
@@ -66,7 +66,7 @@
 },
 "Mooji_Ui_Btn_Blue_178x64.png":
 {
-	"frame": {"x":438,"y":66,"w":178,"h":64},
+	"frame": {"x":253,"y":129,"w":178,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":64},
@@ -74,7 +74,7 @@
 },
 "Mooji_Ui_Btn_Blue_80x78.png":
 {
-	"frame": {"x":73,"y":146,"w":80,"h":78},
+	"frame": {"x":910,"y":2,"w":80,"h":78},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":80,"h":78},
@@ -82,7 +82,7 @@
 },
 "Mooji_Ui_Btn_Yellow_80x78.png":
 {
-	"frame": {"x":1221,"y":66,"w":80,"h":75},
+	"frame": {"x":828,"y":2,"w":80,"h":75},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":80,"h":75},
@@ -90,7 +90,7 @@
 },
 "Mooji_Ui_Button.png":
 {
-	"frame": {"x":1031,"y":66,"w":137,"h":72},
+	"frame": {"x":1401,"y":2,"w":137,"h":72},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":137,"h":72},
@@ -98,7 +98,7 @@
 },
 "Mooji_Ui_Button_Recharge.png":
 {
-	"frame": {"x":2,"y":146,"w":69,"h":78},
+	"frame": {"x":520,"y":2,"w":69,"h":78},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":69,"h":78},
@@ -106,7 +106,7 @@
 },
 "Mooji_Ui_Button_Recharge_Big.png":
 {
-	"frame": {"x":885,"y":146,"w":113,"h":96},
+	"frame": {"x":1286,"y":2,"w":113,"h":96},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":113,"h":96},
@@ -114,7 +114,7 @@
 },
 "Mooji_Ui_Button_Recharge_Big1.png":
 {
-	"frame": {"x":2,"y":272,"w":139,"h":124},
+	"frame": {"x":797,"y":129,"w":139,"h":124},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":139,"h":124},
@@ -122,7 +122,7 @@
 },
 "Mooji_Ui_Button_Recharge_Big2.png":
 {
-	"frame": {"x":1251,"y":146,"w":138,"h":121},
+	"frame": {"x":657,"y":129,"w":138,"h":121},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":138,"h":121},
@@ -130,7 +130,7 @@
 },
 "Mooji_Ui_Close_Button.png":
 {
-	"frame": {"x":1303,"y":66,"w":77,"h":76},
+	"frame": {"x":670,"y":2,"w":77,"h":76},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":77,"h":76},
@@ -138,7 +138,7 @@
 },
 "Mooji_Ui_Diamonds.png":
 {
-	"frame": {"x":619,"y":2,"w":49,"h":49},
+	"frame": {"x":78,"y":2,"w":49,"h":49},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":49,"h":49},
@@ -146,7 +146,7 @@
 },
 "Mooji_Ui_Diamonds_Green1.png":
 {
-	"frame": {"x":1161,"y":2,"w":76,"h":62},
+	"frame": {"x":365,"y":2,"w":76,"h":62},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":26,"y":33,"w":76,"h":62},
@@ -154,7 +154,7 @@
 },
 "Mooji_Ui_Down_Bottom.png":
 {
-	"frame": {"x":242,"y":272,"w":640,"h":128},
+	"frame": {"x":581,"y":648,"w":640,"h":128},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":640,"h":128},
@@ -162,7 +162,7 @@
 },
 "Mooji_Ui_Eject_Frame1.png":
 {
-	"frame": {"x":178,"y":751,"w":627,"h":809},
+	"frame": {"x":597,"y":815,"w":627,"h":809},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":627,"h":809},
@@ -170,15 +170,23 @@
 },
 "Mooji_Ui_Food.png":
 {
-	"frame": {"x":2,"y":751,"w":174,"h":236},
+	"frame": {"x":143,"y":270,"w":174,"h":236},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":35,"y":2,"w":174,"h":236},
 	"sourceSize": {"w":240,"h":240}
 },
+"Mooji_Ui_Gold5.png":
+{
+	"frame": {"x":1540,"y":2,"w":118,"h":98},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":21,"w":118,"h":98},
+	"sourceSize": {"w":128,"h":128}
+},
 "Mooji_Ui_Guild_Number_Bottom3.png":
 {
-	"frame": {"x":1461,"y":66,"w":77,"h":78},
+	"frame": {"x":749,"y":2,"w":77,"h":78},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":77,"h":78},
@@ -186,7 +194,7 @@
 },
 "Mooji_Ui_Head_Background2.png":
 {
-	"frame": {"x":884,"y":272,"w":108,"h":137},
+	"frame": {"x":433,"y":129,"w":108,"h":137},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":137},
@@ -194,7 +202,7 @@
 },
 "Mooji_Ui_Head_Rufus_Partly_BT.png":
 {
-	"frame": {"x":143,"y":272,"w":97,"h":125},
+	"frame": {"x":1660,"y":2,"w":97,"h":125},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":11,"y":8,"w":97,"h":125},
@@ -202,7 +210,7 @@
 },
 "Mooji_Ui_Hero_Hat.png":
 {
-	"frame": {"x":858,"y":66,"w":108,"h":71},
+	"frame": {"x":1176,"y":2,"w":108,"h":71},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":71},
@@ -210,7 +218,7 @@
 },
 "Mooji_Ui_Icon.png":
 {
-	"frame": {"x":155,"y":146,"w":86,"h":86},
+	"frame": {"x":1088,"y":2,"w":86,"h":86},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":86,"h":86},
@@ -218,7 +226,7 @@
 },
 "Mooji_Ui_Icon_Bt_Barrel.png":
 {
-	"frame": {"x":968,"y":66,"w":61,"h":72},
+	"frame": {"x":235,"y":2,"w":61,"h":72},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":61,"h":72},
@@ -226,7 +234,7 @@
 },
 "Mooji_Ui_Icon_Globe_128X128.png":
 {
-	"frame": {"x":1391,"y":146,"w":98,"h":124},
+	"frame": {"x":1759,"y":2,"w":98,"h":124},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":11,"y":1,"w":98,"h":124},
@@ -234,7 +242,7 @@
 },
 "Mooji_Ui_Icon_Iron_Bg125x125.png":
 {
-	"frame": {"x":116,"y":412,"w":130,"h":139},
+	"frame": {"x":1466,"y":129,"w":130,"h":139},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":130,"h":139},
@@ -242,7 +250,7 @@
 },
 "Mooji_Ui_Icon_Iron_Blue_Bg125x125.png":
 {
-	"frame": {"x":248,"y":412,"w":130,"h":139},
+	"frame": {"x":1334,"y":129,"w":130,"h":139},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":130,"h":139},
@@ -250,7 +258,7 @@
 },
 "Mooji_Ui_Icon_Iron_Green_Bg125x125.png":
 {
-	"frame": {"x":644,"y":412,"w":130,"h":139},
+	"frame": {"x":1598,"y":129,"w":130,"h":139},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":130,"h":139},
@@ -258,7 +266,7 @@
 },
 "Mooji_Ui_Icon_Iron_Red_Bg125x125.png":
 {
-	"frame": {"x":776,"y":412,"w":130,"h":139},
+	"frame": {"x":1202,"y":129,"w":130,"h":139},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":130,"h":139},
@@ -266,7 +274,7 @@
 },
 "Mooji_Ui_Icon_Iron_White_Bg125x125.png":
 {
-	"frame": {"x":512,"y":412,"w":130,"h":139},
+	"frame": {"x":1070,"y":129,"w":130,"h":139},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":130,"h":139},
@@ -274,7 +282,7 @@
 },
 "Mooji_Ui_Icon_Iron_Yellow_Bg125x125.png":
 {
-	"frame": {"x":380,"y":412,"w":130,"h":139},
+	"frame": {"x":938,"y":129,"w":130,"h":139},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":130,"h":139},
@@ -282,7 +290,7 @@
 },
 "Mooji_Ui_Icon_Plus.png":
 {
-	"frame": {"x":543,"y":2,"w":30,"h":30},
+	"frame": {"x":2,"y":2,"w":30,"h":30},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":30},
@@ -290,7 +298,7 @@
 },
 "Mooji_Ui_Icon_Recharge.png":
 {
-	"frame": {"x":575,"y":2,"w":42,"h":42},
+	"frame": {"x":34,"y":2,"w":42,"h":42},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":42,"h":42},
@@ -298,7 +306,7 @@
 },
 "Mooji_Ui_Letter.png":
 {
-	"frame": {"x":714,"y":66,"w":65,"h":69},
+	"frame": {"x":298,"y":2,"w":65,"h":69},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":65,"h":69},
@@ -306,7 +314,7 @@
 },
 "Mooji_Ui_Magnifier_Seek.png":
 {
-	"frame": {"x":670,"y":2,"w":53,"h":52},
+	"frame": {"x":129,"y":2,"w":53,"h":52},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":53,"h":52},
@@ -314,7 +322,7 @@
 },
 "Mooji_Ui_Map.png":
 {
-	"frame": {"x":1000,"y":146,"w":126,"h":98},
+	"frame": {"x":2,"y":129,"w":126,"h":98},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":126,"h":98},
@@ -322,7 +330,7 @@
 },
 "Mooji_Ui_Payment_Line.png":
 {
-	"frame": {"x":143,"y":555,"w":577,"h":165},
+	"frame": {"x":2,"y":648,"w":577,"h":165},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":577,"h":165},
@@ -330,7 +338,7 @@
 },
 "Mooji_Ui_Prompt.png":
 {
-	"frame": {"x":781,"y":66,"w":75,"h":71},
+	"frame": {"x":443,"y":2,"w":75,"h":71},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":75,"h":71},
@@ -338,7 +346,7 @@
 },
 "Mooji_Ui_Release_Task_Bottom1.png":
 {
-	"frame": {"x":2,"y":555,"w":139,"h":141},
+	"frame": {"x":2,"y":270,"w":139,"h":141},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":139,"h":141},
@@ -346,7 +354,7 @@
 },
 "Mooji_Ui_Return_Button.png":
 {
-	"frame": {"x":1382,"y":66,"w":77,"h":76},
+	"frame": {"x":591,"y":2,"w":77,"h":76},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":77,"h":76},
@@ -354,7 +362,7 @@
 },
 "Mooji_Ui_Screw.png":
 {
-	"frame": {"x":722,"y":555,"w":240,"h":194},
+	"frame": {"x":319,"y":270,"w":240,"h":194},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":16,"w":240,"h":194},
@@ -362,7 +370,7 @@
 },
 "Mooji_Ui_Up_Bottom.png":
 {
-	"frame": {"x":908,"y":412,"w":640,"h":141},
+	"frame": {"x":1223,"y":648,"w":640,"h":141},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":640,"h":141},
@@ -370,7 +378,7 @@
 },
 "Mooji_Ui_Up_Bottom_Iron.png":
 {
-	"frame": {"x":243,"y":146,"w":640,"h":89},
+	"frame": {"x":1070,"y":508,"w":640,"h":89},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":640,"h":89},
@@ -378,7 +386,7 @@
 },
 "Mooji_Ui_Vip.png":
 {
-	"frame": {"x":1170,"y":66,"w":49,"h":73},
+	"frame": {"x":184,"y":2,"w":49,"h":73},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":49,"h":73},
@@ -386,7 +394,7 @@
 },
 "dalier.png":
 {
-	"frame": {"x":2,"y":412,"w":112,"h":139},
+	"frame": {"x":543,"y":129,"w":112,"h":139},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":112,"h":139},
@@ -397,8 +405,8 @@
 	"version": "1.0",
 	"image": "mainui.png",
 	"format": "RGBA8888",
-	"size": {"w":1559,"h":1891},
+	"size": {"w":1868,"h":1955},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:a018f22653bc2c08fb816e11171f2dfb$"
+	"smartupdate": "$TexturePacker:SmartUpdate:540fdd61f93afb5d4f31501643872832$"
 }
 }
