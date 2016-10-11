@@ -17,21 +17,20 @@
 
 <script>
 
-//
 let Container = PIXI.Container,
-    autoDetectRenderer = PIXI.autoDetectRenderer,
-    loader = PIXI.loader,
-    resources = PIXI.loader.resources,
-    TextureCache = PIXI.utils.TextureCache,
-    Texture = PIXI.Texture,
-    Graphics = PIXI.Graphics,
-    Text = PIXI.Text,
-    MovieClip = PIXI.extras.MovieClip,
-    Sprite = PIXI.Sprite;
+	autoDetectRenderer = PIXI.autoDetectRenderer,
+	loader = PIXI.loader,
+	resources = PIXI.loader.resources,
+	TextureCache = PIXI.utils.TextureCache,
+	Texture = PIXI.Texture,
+	Graphics = PIXI.Graphics,
+	Text = PIXI.Text,
+	MovieClip = PIXI.extras.MovieClip,
+	Sprite = PIXI.Sprite;
 
 
 let stage = new Container(),
-     renderer = new PIXI.CanvasRenderer(640,1138); 
+	 renderer = new PIXI.CanvasRenderer(640,1138); 
 document.body.appendChild(renderer.view);
 
 renderer.backgroundColor = 0x191970;
@@ -45,7 +44,7 @@ let pre_sceneState = inner;
 let city,world,chatStyle;
 let res_outmap,res_innerui,res_outerui;
 
-let su,scale,t,b,background,idz,pixie,pixim,res_mainui,vx,vy;
+let su,scale,t,b,background,idz,pixie,pixim,res_mainui,res_loading;
 
 let innerBtns={};
 let innerBtn_bottom_left,innerBtn_chat,innerBtn_bottom_right;
@@ -54,6 +53,7 @@ let outerBtns={};
 let outerBtn_bottom_left,outerBtn_chat,outerBtn_bottom_right;
 
 let innerSel;
+
 // (initallbtninfo());
 inituis();
 
@@ -65,120 +65,336 @@ inituis();
 // http://www.cnblogs.com/yexiaochai/p/3462657.html
 //http://www.cnblogs.com/yexiaochai/p/3442220.html
 
- 
+
 
 loader
-    .add("images/zs.json")//僵尸-帧
-    .add("background","images/Mooji_preview11.png")//内城-底图
-    .add("chatbackground","images/Mooji_Kraft_Paper_Bottom.png")//聊天-底图
-    .add("images/mainui.json",function(res)//UI-帧
-    {
-      res_mainui = res.textures
-    })
-    .add('images/sewers.json', function(res)//世界-地图
-    {
-        res_outmap = res.tiledMap;
-    })
-    .on("progress", loadProgressHandler)
-    .load(setup);
+	.add("images/loading.json",function(res)//UI-帧
+	{
+	  res_loading = res.textures
+	})
+	.add("images/mainui.json",function(res)//UI-帧
+	{
+	  res_mainui = res.textures
+	})
+	.add('images/sewers.json', function(res)//世界-地图
+	{
+		res_outmap = res.tiledMap;
+	})
+	.add("images/zs.json")//僵尸-帧
+	.add("background","images/Mooji_preview11.png")//内城-底图
+	.add("chatbackground","images/Mooji_Kraft_Paper_Bottom.png")//聊天-底图
+	.load(loading);
 
 function loadProgressHandler(loader, resource) {
-  console.log("loading: " + resource.url+"  /  "+ resource.name); 
-  console.log("progress: " + loader.progress + "%"); 
+  console.log("progress: " + loader.progress + "%",resource.name); 
+}
+
+function loading(){
+
+	scale = scaleToWindow(renderer.view);
+	window.addEventListener("resize",event => {
+	  scaleToWindow(renderer.view);
+	});
+	console.log("All files loaded....");
+
+	loadingPic = new PIXI.Sprite(res_loading["Mooji_Ui_Loading.png"]);
+
+	loadingStage = new Container();
+
+	loadingPro = new PIXI.Text("1%",{fontSize:"25px Arial",fill:"white"});
+	loadingPro.position.x = 300;
+	loadingPro.position.y = 1000;
+
+	loadingProBack =new PIXI.Sprite(res_loading["Mooji_Ui_Menus_Hero_Exp_Bar_Big.png"]);
+	loadingProBack.position.x = 100;
+	loadingProBack.position.y = 1030;
+
+	
+	loadingProFill =new PIXI.Sprite(res_loading["Mooji_Blood_Green_Big.png"]);
+	loadingProFill.position.x = 8-loadingProFill.width;//8
+	loadingProFill.position.y = 8;//8
+
+	let fsm = [
+		res_loading["Mooji_Loading_Green_01_00002.png"],
+		res_loading["Mooji_Loading_Green_01_00003.png"],
+		res_loading["Mooji_Loading_Green_01_00004.png"],
+		res_loading["Mooji_Loading_Green_01_00005.png"],
+		res_loading["Mooji_Loading_Green_01_00006.png"],
+		res_loading["Mooji_Loading_Green_01_00007.png"],
+		res_loading["Mooji_Loading_Green_01_00008.png"],
+		res_loading["Mooji_Loading_Green_01_00009.png"]
+	]
+
+	loadani = new MovieClip(fsm);
+	loadani.animationSpeed=0.3;
+	loadani.play();
+	loadani.position.y = loadingProBack.position.y - 90;
+	// loadani.position.y = loadingProFill.position.y;
+	
+	var thing = new PIXI.Graphics();
+	thing.lineStyle(2, 0xffd900, 1);
+	thing.moveTo(loadingProBack.position.x+9,loadingProBack.position.y+8);
+	thing.lineTo(loadingProBack.position.x+9+loadingProBack.width, loadingProBack.position.y+8);
+	thing.lineTo(loadingProBack.position.x+9+loadingProBack.width, loadingProBack.position.y+8+loadingProBack.height);
+	thing.lineTo(loadingProBack.position.x+9, loadingProBack.position.y+8+loadingProBack.height);
+	thing.lineTo(loadingProBack.position.x+9, loadingProBack.position.y+8);
+	thing.endFill();
+
+	loadingProFill.mask = thing;
+	//loadingProFill.addChild(loadani);
+
+
+
+	loadingProBack.addChild(loadingProFill);
+
+	stage.addChild(loadingPic);
+	loadingStage.addChild(loadingPro);
+	loadingStage.addChild(loadingProBack);
+	loadingStage.addChild(loadani);
+	stage.addChild(loadingStage);
+   
+
+	i=1;
+	progressInfo = setInterval(function(){
+		i++;
+
+		if(i<=99){
+		loadingPro.text = i+"%";
+		loadingProFill.position.x += loadingProFill.width/99;
+		
+		loadani.position.x = loadingProFill.position.x+loadingProFill.width;
+		}
+		
+
+		if(i>=100){
+			clearInterval(progressInfo);
+			login();
+			stage.removeChild(loadingStage);
+		}
+	},5);
+
+	loopLoad();
+
+	
+}
+
+
+
+
+function loopLoad() {
+	requestAnimationFrame(loopLoad);
+	
+	renderer.render(stage);
+}
+
+function login() {
+	
+	loadingStage.visible = false;
+	console.log("ready login");
+
+   loginStage = new Container();
+
+
+   loginBtn = new PIXI.Sprite(res_loading["Mooji_Ui_Btn_Green_363x62.png"]);
+   loginBtn.position.x =120;
+   loginBtn.position.y =920;
+   loginBtn.interactive = true;
+	loginBtn.buttonMode = true;
+	loginBtn.mousedown = function(data){
+	  loginBtn.scale.x -= 0.05;
+	  loginBtn.scale.y -= 0.05;
+	}
+	loginBtn.mouseup = function(data){
+	  loginBtn.scale.x += 0.05;
+	  loginBtn.scale.y += 0.05;
+	  setup();
+		stage.removeChild(loginStage);
+		stage.removeChild(loadingPic);
+	}
+
+   loginBtnText = new PIXI.Text("开始游戏",{fontSize:"25px Arial",fill:"white"});
+   loginBtnText.position.x =loginBtn.width/2-loginBtnText.width/1.7;
+   loginBtnText.position.y =(loginBtn.height-loginBtnText.height)/2.6;
+   loginBtn.addChild(loginBtnText);
+
+   loginFaceBookBtn = new PIXI.Sprite(res_loading["Mooji_Ui_Btn_Blue_363x62.png"]);
+   loginFaceBookBtn.position.x =120;
+   loginFaceBookBtn.position.y =1000;
+   loginFaceBookBtn.interactive = true;
+	loginFaceBookBtn.buttonMode = true;
+	loginFaceBookBtn.mousedown = function(data){
+	  loginFaceBookBtn.scale.x += 0.05;
+	  loginFaceBookBtn.scale.y += 0.05;
+	}
+	loginFaceBookBtn.mouseup = function(data){
+	  loginFaceBookBtn.scale.x -= 0.05;
+	  loginFaceBookBtn.scale.y -= 0.05;
+	  setup();
+	}
+
+   loginFaceBookLogo = new PIXI.Sprite(res_loading["Mooji_Ui_Btn_Facebook_1.png"]);
+   loginFaceBookLogo.position.x =0;
+   loginFaceBookLogo.position.y =0;
+   loginFaceBookBtn.addChild(loginFaceBookLogo);
+
+
+   loginFaceBookBtnText = new PIXI.Text("Facebook登陆",{fontSize:"25px Arial",fill:"white"});
+   loginFaceBookBtnText.position.x =loginFaceBookBtn.width/2-loginFaceBookBtnText.width/1.7;
+   loginFaceBookBtnText.position.y =(loginFaceBookBtn.height-loginFaceBookBtnText.height)/2.6;
+   loginFaceBookBtn.addChild(loginFaceBookBtnText);
+
+   
+
+   loginStage.addChild(loginBtn);
+   loginStage.addChild(loginFaceBookBtn);
+   //loginStage.addChild(loginFaceBookLogo);
+   stage.addChild(loginStage);
+
+   loopLoad();
+
+   //renderer.render(stage);
+
+
+
+}
+function loopLogin() {
+	requestAnimationFrame(loopLogin);
+	renderer.render(stage);
 }
 
 function setup() {
-    // su = new SpriteUtilities(PIXI);
-    scale = scaleToWindow(renderer.view);
-    t = new Tink(PIXI,renderer.view,scale);
-    // b = new Bump(PIXI);
+	// su = new SpriteUtilities(PIXI);
+	//scale = scaleToWindow(renderer.view);
+	t = new Tink(PIXI,renderer.view,scale);
+	// b = new Bump(PIXI);
 
-    pointer = t.makePointer();
-    // pointer.press = ()=>{
+	pointer = t.makePointer();
+	// pointer.press = ()=>{
 
-    // };
-    // pointer.release = ()=>{
+	// };
+	// pointer.release = ()=>{
 
-    // };
-    // pointer.tap = ()=>{
+	// };
+	// pointer.tap = ()=>{
 
-    // };
+	// };
    
 
 //outerScene
-    world = new Container();
-    initOuterSceneUI();
-    stage.addChild(world);
+	world = new Container();
+	initOuterSceneUI();
+	stage.addChild(world);
 
 //innerScene
-    city = new Container();
-    initInnerSceneUI();
-    stage.addChild(city);
+	city = new Container();
+	initInnerSceneUI();
+	stage.addChild(city);
 
 //UIAct
-    innerui = new Container();
-    stage.addChild(innerui);
-    for(let layername in uidata){
-      let layer = uidata[layername]
-      for(let prop in layer){
-          uibtnact(this[prop],prop,layer[prop]);
-      }
-    }
+	innerui = new Container();
+	stage.addChild(innerui);
+	for(let layername in uidata){
+	  let layer = uidata[layername]
+	  for(let prop in layer){
+		  uibtnact(this[prop],prop,layer[prop]);
+	  }
+	}
 
 //pub
-    //  pointer.x = pointer.x / scale;
-    //  pointer.y = pointer.y / scale;
-    window.addEventListener("resize",event => {
-      scaleToWindow(renderer.view);
-    });
-    t.makeDraggable(background);
+	//  pointer.x = pointer.x / scale;
+	//  pointer.y = pointer.y / scale;
+	//window.addEventListener("resize",event => {
+	//  scaleToWindow(renderer.view);
+	//});
+	t.makeDraggable(background);
+	inner_visibelTag(true);
 
 //聊天
-    chatStyle = new Container();
-    initChatUI();
-    stage.addChild(chatStyle);
-    chatStyle.visible = false;
+	chatStyle = new Container();
+	initChatUI();
+	stage.addChild(chatStyle);
+	chatStyle.visible = false;
 
-    
+	let chatMask = new PIXI.Graphics();
+	chatMask.lineStyle(2, 0xffd900, 1);
+	chatMask.moveTo(0,200);
+	chatMask.lineTo(630, 200);
+	chatMask.lineTo(630, 1000);
+	chatMask.lineTo(0, 1000);
+	chatMask.lineTo(0, 200);
+	chatMask.endFill();
+
+	chatsGroup.mask = chatMask;
+
+	//stage.addChild(thing);
+
+	
 //商品-待优化
-    itemStyle = new Container();
-    initItemUI();
-    stage.addChild(itemStyle);
-    itemStyle.visible = false;
+	itemStyle = new Container();
+	initItemUI();
+	stage.addChild(itemStyle);
+	itemStyle.visible = false;
 
+	let itemMask = new PIXI.Graphics();
+	itemMask.lineStyle(2, 0xffd900, 1);
+	itemMask.moveTo(0,300);
+	itemMask.lineTo(630, 300);
+	itemMask.lineTo(630, 1100);
+	itemMask.lineTo(0, 1100);
+	itemMask.lineTo(0, 300);
+	itemMask.endFill();
+
+	itemsGroup.mask = itemMask;
 
 //uiText
-    initUITextUI();
+	initUITextUI();
 
 //GameLoop  
-    loop();
+	loop();
 
 }
 
 function loop() {
 
-    requestAnimationFrame(loop);
-    t.update();
-    sceneState();
-    state();
-    // state = end;
-    renderer.render(stage);
+	requestAnimationFrame(loop);
+	t.update();
+	sceneState();
+	state();
+	// state = end;
+	renderer.render(stage);
 }
 
 function inner(){
   innerui.visible = true;
-  city.visible = true;
-  itemStyle.visible = false;
+  //city.visible = true;
+
+
+	itemStyle.visible = false;
   background.draggable  = true;
   document.getElementById('chatDiv').style.display = "none";
   world.visible = false;
   chatStyle.visible = false;
+  
   contain(background, {x: (renderer.width-background.width), y: (renderer.height-background.height), width: background.width, height: background.height});
+}
+function inner_visibelTag(booleanTag){
+	city.visible = booleanTag;
+	Mooji_Ui_Task_Bottom.visible = booleanTag;
+	Mooji_Ui_Icon1.visible = booleanTag;
+	Mooji_Ui_Prompt.visible = booleanTag;
+	Mooji_Ui_Task_Interphone.visible = booleanTag;
+
+
+	Mooji_The_Chest.visible = !booleanTag;
+	Mooji_Ui_Icon_2.visible = !booleanTag;
+	Mooji_Ui_Icon_Globe_128X128.visible = !booleanTag;
+	Mooji_Ui_Release_Task_Bottom1.visible = !booleanTag;
 }
 
 function outer(){
   innerui.visible = true;
-  city.visible = false;
+  //city.visible = false;
+	//inner_visibelTag(false);
   world.visible = true;
   itemStyle.visible = false;
   chatStyle.visible = false;
@@ -192,7 +408,8 @@ function chat(){
   let lop = scaleToWindow(renderer.view);
   innerui.visible = false;
   chatStyle.visible = true;
-  city.visible = false;
+  //city.visible = false;
+	//inner_visibelTag(false);
   world.visible = false;
   background.draggable  = false;
   res_outmap.draggable  = false;
@@ -219,31 +436,31 @@ function chat(){
 }
 
 function goods(){
-    innerui.visible = false;
-    itemStyle.visible = true;
-    chatStyle.visible = false;
-    city.visible = false;
-    world.visible = false;
-    background.draggable  = false;
-    res_outmap.draggable  = false;  
-    document.getElementById('chatDiv').style.display = "none";
-    contain(itemsGroup, {x: 620, y: (renderer.height-itemsGroup.height-320), width: 620, height: itemsGroup.height+40});
-    
+	innerui.visible = false;
+	itemStyle.visible = true;
+	chatStyle.visible = false;
+	//city.visible = false;
+	world.visible = false;
+	background.draggable  = false;
+	res_outmap.draggable  = false;  
+	document.getElementById('chatDiv').style.display = "none";
+	contain(itemsGroup, {x: 620, y: (renderer.height-itemsGroup.height-320), width: 620, height: itemsGroup.height+40});
+	
 }
 
 function play() {
-    if (city.visible){
+	if (city.visible){
 
-      if (innerSel){
-        innerSel.x += innerSel.vx;
-        innerSel.y += innerSel.vy;
-        contain(innerSel, {x: 0, y: 0, width: 4096, height: 4096});
-      }
-    }else if(world.visible){
-      pixim.x += pixim.vx;
-      pixim.y += pixim.vy;
-      contain(pixim, {x: 0, y: 0, width: 4096, height: 4096});
-    }
+	  if (innerSel){
+		innerSel.x += innerSel.vx;
+		innerSel.y += innerSel.vy;
+		contain(innerSel, {x: 0, y: 0, width: 4096, height: 4096});
+	  }
+	}else if(world.visible){
+	  pixim.x += pixim.vx;
+	  pixim.y += pixim.vy;
+	  contain(pixim, {x: 0, y: 0, width: 4096, height: 4096});
+	}
 }
 
 function end(){
@@ -251,7 +468,7 @@ function end(){
 }
 
 function reset(){
-    //
+	//
 }
 
 // function wait(duration = 0){
@@ -259,7 +476,6 @@ function reset(){
 //     setTimeOut(resolve,duration);
 //   });
 // }
-
 </script>
 
 <style>

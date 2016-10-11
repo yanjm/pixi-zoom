@@ -1,0 +1,148 @@
+{"frames": {
+
+"Mooji_Blood_Green.png":
+{
+	"frame": {"x":1564,"y":309,"w":259,"h":33},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":259,"h":33},
+	"sourceSize": {"w":259,"h":33}
+},
+"Mooji_Blood_Green_Big.png":
+{
+	"frame": {"x":1764,"y":2,"w":406,"h":41},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":406,"h":41},
+	"sourceSize": {"w":406,"h":41}
+},
+"Mooji_Loading_Green_01_00002.png":
+{
+	"frame": {"x":1671,"y":427,"w":126,"h":203},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":38,"y":20,"w":126,"h":203},
+	"sourceSize": {"w":200,"h":251}
+},
+"Mooji_Loading_Green_01_00003.png":
+{
+	"frame": {"x":1428,"y":2,"w":138,"h":223},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":32,"y":9,"w":138,"h":223},
+	"sourceSize": {"w":200,"h":251}
+},
+"Mooji_Loading_Green_01_00004.png":
+{
+	"frame": {"x":1142,"y":2,"w":144,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":30,"y":3,"w":144,"h":235},
+	"sourceSize": {"w":200,"h":251}
+},
+"Mooji_Loading_Green_01_00005.png":
+{
+	"frame": {"x":1288,"y":2,"w":138,"h":225},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":33,"y":8,"w":138,"h":225},
+	"sourceSize": {"w":200,"h":251}
+},
+"Mooji_Loading_Green_01_00006.png":
+{
+	"frame": {"x":1568,"y":2,"w":134,"h":207},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":31,"y":18,"w":134,"h":207},
+	"sourceSize": {"w":200,"h":251}
+},
+"Mooji_Loading_Green_01_00007.png":
+{
+	"frame": {"x":1142,"y":309,"w":128,"h":187},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":31,"y":28,"w":128,"h":187},
+	"sourceSize": {"w":200,"h":251}
+},
+"Mooji_Loading_Green_01_00008.png":
+{
+	"frame": {"x":1272,"y":309,"w":122,"h":163},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":29,"y":40,"w":122,"h":163},
+	"sourceSize": {"w":200,"h":251}
+},
+"Mooji_Loading_Green_01_00009.png":
+{
+	"frame": {"x":1417,"y":309,"w":126,"h":167},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":27,"y":38,"w":126,"h":167},
+	"sourceSize": {"w":200,"h":251}
+},
+"Mooji_Ui_Btn_Blue_363x62.png":
+{
+	"frame": {"x":1142,"y":576,"w":356,"h":55},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":356,"h":55},
+	"sourceSize": {"w":356,"h":55}
+},
+"Mooji_Ui_Btn_Facebook_1.png":
+{
+	"frame": {"x":1500,"y":576,"w":62,"h":63},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":62,"h":63},
+	"sourceSize": {"w":62,"h":63}
+},
+"Mooji_Ui_Btn_Green_363x62.png":
+{
+	"frame": {"x":1607,"y":211,"w":363,"h":62},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":363,"h":62},
+	"sourceSize": {"w":363,"h":62}
+},
+"Mooji_Ui_Loading.png":
+{
+	"frame": {"x":2,"y":2,"w":640,"h":1138},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":640,"h":1138},
+	"sourceSize": {"w":640,"h":1138}
+},
+"Mooji_Ui_Menus_Hero_Exp_Bar.png":
+{
+	"frame": {"x":1142,"y":498,"w":273,"h":48},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":273,"h":48},
+	"sourceSize": {"w":273,"h":48}
+},
+"Mooji_Ui_Menus_Hero_Exp_Bar1.png":
+{
+	"frame": {"x":1142,"y":239,"w":463,"h":68},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":463,"h":68},
+	"sourceSize": {"w":463,"h":68}
+},
+"Mooji_Ui_Menus_Hero_Exp_Bar_Big.png":
+{
+	"frame": {"x":1704,"y":2,"w":423,"h":58},
+	"rotated": true,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":423,"h":58},
+	"sourceSize": {"w":423,"h":58}
+}},
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "loading.png",
+	"format": "RGBA8888",
+	"size": {"w":1807,"h":644},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:c964089255f67729fc4e894dd8b13d81$"
+}
+}

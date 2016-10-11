@@ -181,12 +181,12 @@ function initChatUI(){
     Mooji_Ui_Close_Button.interactive = true;
     Mooji_Ui_Close_Button.buttonMode = true;
     Mooji_Ui_Close_Button.mousedown = function(data){
-      Mooji_Ui_Close_Button.scale.x += 0.1;
-      Mooji_Ui_Close_Button.scale.y += 0.1;
+      Mooji_Ui_Close_Button.scale.x -= 0.05;
+      Mooji_Ui_Close_Button.scale.y -= 0.05;
     }
     Mooji_Ui_Close_Button.mouseup = function(data){
-      Mooji_Ui_Close_Button.scale.x -= 0.1;
-      Mooji_Ui_Close_Button.scale.y -= 0.1;
+      Mooji_Ui_Close_Button.scale.x += 0.05;
+      Mooji_Ui_Close_Button.scale.y += 0.05;
       
       sceneState = pre_sceneState;
     }
@@ -261,19 +261,33 @@ function initItemUI(){
     //标题背景
     item_Mooji_Ui_Eject_Frame1.scale.y = 1.3;
     //遮挡板
-    item_Mooji_Black_Dark_Bottom1.position.y = item_Mooji_Ui_Up_Bottom_Iron.height-20;
-    item_Mooji_Black_Dark_Bottom1.position.x = -10;
-    item_Mooji_Black_Dark_Bottom1.scale.x = 1.5;
+    // item_Mooji_Black_Dark_Bottom1.position.y = item_Mooji_Ui_Up_Bottom_Iron.height-20;
+    // item_Mooji_Black_Dark_Bottom1.position.x = -10;
+    // item_Mooji_Black_Dark_Bottom1.scale.x = 1.5;
 
 }
 
+function actStr(inputStr){
+  if(inputStr.indexOf("R]")>0){
+    let repStr = inputStr.substring(0,inputStr.indexOf("R]")+2);
+    inputStr = inputStr.replace(repStr,"");
+  }
+  return inputStr;
+}
+function actScale(inputStr){
+    if(inputStr == null ){
+        inputStr =1;
+    }
+  return inputStr;
+}
+
 function uibtnact(btnObj,prop,buttonInfo){
-  btnObj = new Sprite(res_mainui[prop]);
-  btnObj.btnName = prop;
-  btnObj.position.x = buttonInfo.x;
-  btnObj.position.y = buttonInfo.y;
-  btnevent(btnObj,buttonInfo);
-  innerui.addChild(btnObj);
+  this[buttonInfo.btnname] = new Sprite(res_mainui[actStr(prop)]);
+  this[buttonInfo.btnname].btnName = prop;
+  this[buttonInfo.btnname].position.x = buttonInfo.x;
+  this[buttonInfo.btnname].position.y = buttonInfo.y;
+  btnevent(this[buttonInfo.btnname],buttonInfo);
+  innerui.addChild(this[buttonInfo.btnname]);
 }
 
 function chatact(btnObj,prop,buttonInfo){
@@ -285,13 +299,18 @@ function chatact(btnObj,prop,buttonInfo){
     this[buttonInfo.btnname] = new PIXI.Text(buttonInfo.text,{fontSize:buttonInfo.fontsize,fill:buttonInfo.fill});
     this[buttonInfo.btnname].position.x = buttonInfo.x;
     this[buttonInfo.btnname].position.y = buttonInfo.y;
-  }
-  else{
-    this[buttonInfo.btnname] = new Sprite(res_mainui[prop]);
+    this[buttonInfo.btnname].scale.x = actScale(buttonInfo.sx);
+    this[buttonInfo.btnname].scale.y = actScale(buttonInfo.sy);
+  }else{
+    this[buttonInfo.btnname] = new Sprite(res_mainui[actStr(prop)]);
     this[buttonInfo.btnname].position.x = buttonInfo.x;
     this[buttonInfo.btnname].position.y = buttonInfo.y;
+    this[buttonInfo.btnname].scale.x = actScale(buttonInfo.sx);
+    this[buttonInfo.btnname].scale.y = actScale(buttonInfo.sy);
   }
-  chatStyle.addChild(this[buttonInfo.btnname]);
+  if(buttonInfo.postype!=-9){
+    chatStyle.addChild(this[buttonInfo.btnname]);
+  }
 }
 
 function itemact(btnObj,prop,buttonInfo){
@@ -305,11 +324,13 @@ function itemact(btnObj,prop,buttonInfo){
     this[buttonInfo.btnname].position.y = buttonInfo.y;
   }
   else{
-    this[buttonInfo.btnname] = new Sprite(res_mainui[prop]);
+    this[buttonInfo.btnname] = new Sprite(res_mainui[actStr(prop)]);
     this[buttonInfo.btnname].position.x = buttonInfo.x;
     this[buttonInfo.btnname].position.y = buttonInfo.y;
   }
-  itemStyle.addChild(this[buttonInfo.btnname]);
+  if(buttonInfo.postype!=-9){
+    itemStyle.addChild(this[buttonInfo.btnname]);
+  }
 }
 
 function uitextact(btnObj,prop,buttonInfo){
@@ -320,22 +341,26 @@ function uitextact(btnObj,prop,buttonInfo){
 }
 
 function changeState(uiName){
-  
+
   pre_sceneState = sceneState;
-  if("Mooji_Ui_Map.png"==uiName){
+  if("Mooji_Ui_Map"==uiName){
     if (sceneState == inner){
       sceneState = outer;
       t.makeDraggable(res_outmap);
+      inner_visibelTag(false);
     }else{
       sceneState = inner;
       t.makeDraggable(background);
+      inner_visibelTag(true);
     }
-  }else if("Mooji_Ui_Down_Bottom.png"==uiName){
+  }else if("Mooji_Ui_Down_Bottom"==uiName){
     sceneState = chat;
     t.makeDraggable(chatsGroup);
-  }else if("Mooji_Ui_Diamonds.png"==uiName){
+    // inner_visibelTag(false);
+  }else if("Mooji_Ui_Diamonds"==uiName){
     sceneState = goods;
     t.makeDraggable(itemsGroup);
+    // inner_visibelTag(false);
   }
 }
 
@@ -349,7 +374,7 @@ function createbtnrange(btnrange,btnObj,buttonInfo){
   //   console.log("press11ww:"+btnObj.width+btnObj.height);
   // };
   btnrange.release =()=>{
-    changeState(btnObj.btnName);
+    changeState(buttonInfo.btnName);
   };
 
 }
@@ -357,21 +382,21 @@ function createbtnrange(btnrange,btnObj,buttonInfo){
 function btnevent(btnObj,buttonInfo){
   if(buttonInfo.postype !=-1){//-1,不处理事件
     if(buttonInfo.postype == 0){//0，裁剪范围事件
-      this[btnObj.btnName+"event"] = new Sprite();
-      createbtnrange( this[btnObj.btnName+"event"],btnObj,buttonInfo)
+      //this[buttonInfo.btnName+"event"] = new Sprite();
+      //createbtnrange( this[buttonInfo.btnName+"event"],btnObj,buttonInfo)
 
     }else if(buttonInfo.postype == 9){//9,Text
     }else{//sprite，即事件触发
       btnObj.interactive = true;
       btnObj.buttonMode = true;
       btnObj.mousedown = function(data){
-        btnObj.scale.x += 0.1;
-        btnObj.scale.y += 0.1;
+        btnObj.scale.x -= 0.05;
+        btnObj.scale.y -= 0.05;
       }
       btnObj.mouseup = function(data){
-        btnObj.scale.x -= 0.1;
-        btnObj.scale.y -= 0.1;
-        changeState(btnObj.btnName);
+        btnObj.scale.x += 0.05;
+        btnObj.scale.y += 0.05;
+        changeState(buttonInfo.btnname);
       }
     }
   }
@@ -484,7 +509,10 @@ function getItems(){
     itemMsg.position.y = itemHead.position.y+itemData.height*1.5;
 
     let itemPrice = new Sprite(res_mainui[itemInfo.pricebackimg]);
-    let priceType = new Sprite(res_mainui[itemInfo.pricetypeimg]);   
+    let priceType = new Sprite(res_mainui[itemInfo.pricetypeimg]);
+    // priceType.scale.x = 0.3;
+    // priceType.scale.y = 0.3;  
+
     let price = new PIXI.Text(itemInfo.price,{fontSize:"20px Arial",fill:"white"});
     price.position.x = itemPrice.position.x +itemPrice.width/2.5;
     price.position.y = itemPrice.position.y+itemPrice.height/2.5;
@@ -495,14 +523,14 @@ function getItems(){
 
     itemPrice.interactive = true;
     itemPrice.mousedown = function(data){
-        priceType.scale.x += 0.1;
-        priceType.scale.y += 0.1;
+        // priceType.scale.x += 0.1;
+        // priceType.scale.y += 0.1;
         price.scale.x += 0.1;
         price.scale.y += 0.1;
       }
       itemPrice.mouseup = function(data){
-        priceType.scale.x -= 0.1;
-        priceType.scale.y -= 0.1;
+        // priceType.scale.x -= 0.1;
+        // priceType.scale.y -= 0.1;
         price.scale.x -= 0.1;
         price.scale.y -= 0.1;
       }

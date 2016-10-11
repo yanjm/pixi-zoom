@@ -39,56 +39,151 @@
                 "btnx":135,
                 "btny":1010,
                 "btnw":360,
-                "btnh":128
+                "btnh":128,
+                "btnname":"Mooji_Ui_Down_Bottom"
             },
 			"Mooji_Ui_Up_Bottom.png": {
                 "postype": -1,
                 "x": 0,
-                "y": 0
+                "y": 0,
+                "btnname":"Mooji_Ui_Up_Bottom"
+            },
+            "Mooji_Ui_Button_Recharge.png":{
+                "postype": 1,
+                "x": 560,
+                "y": 150,
+                "btnname":"Mooji_Ui_Button_Recharge"
+            },
+            "Mooji_Ui_Icon.png":{
+                "postype": -1,
+                "x": 540,
+                "y": 800,
+                "btnname":"Mooji_Ui_Icon"
+            },
+            "[1R]Mooji_Ui_Icon.png":{
+                "postype": -1,
+                "x": 540,
+                "y": 900,
+                "btnname":"Mooji_Ui_Icon_1"
+            },
+            "Mooji_Ui_Icon1.png":{
+                "postype": -1,
+                "x": 400,
+                "y": 910,
+                "btnname":"Mooji_Ui_Icon1"
+            },
+            "Mooji_Ui_Task_Bottom.png":{
+                "postype": -1,
+                "x": 0,
+                "y": 910,
+                "btnname":"Mooji_Ui_Task_Bottom"
+            },
+            "[2R]Mooji_Ui_Icon.png":{
+                "postype": -1,
+                "x": 540,
+                "y": 700,
+                "btnname":"Mooji_Ui_Icon_2"
+            },
+            "Mooji_Ui_Release_Task_Bottom1.png":{
+                "postype": -1,
+                "x": 0,
+                "y": 810,
+                "btnname":"Mooji_Ui_Release_Task_Bottom1"
             }
+            
+            
+            
+
+            
         },
 		"layer1": {
             "Mooji_Ui_Map.png": {
                 "postype": 1,
                 "x": 0,
-                "y": 1010
+                "y": 1010,
+                "btnname":"Mooji_Ui_Map"
             },
 			"Mooji_Ui_Alliance_Icon.png": {
                 "postype": 1,
                 "x": 519,
-                "y": 1010
+                "y": 1010,
+                "btnname":"Mooji_Ui_Alliance_Icon"
             },
             "dalier.png": {
                 "postype": -1,
                 "x": 0,
-                "y": 0
+                "y": 0,
+                "btnname":"dalier"
             },
             "Mooji_Ui_Vip.png": {
                 "postype": -1,
                 "x": 112,
-                "y": 0
+                "y": 0,
+                "btnname":"Mooji_Ui_Vip"
             },
             "Mooji_Ui_Button.png": {
                 "postype": -1,
                 "x": 503,
-                "y": 0
+                "y": 0,
+                "btnname":"Mooji_Ui_Button"
             },
             "Mooji_Ui_Diamonds.png": {
                 "postype": 1,
                 "x": 579,
-                "y": 10
-            },
-            
-            "Mooji_Ui_Icon_Plus.png":{
-                "postype": 1,
-                "x": 570,
-                "y": 200
+                "y": 10,
+                "btnname":"Mooji_Ui_Diamonds"
             },
             "Mooji_Ui_Icon_Recharge.png":{
                 "postype": 1,
-                "x": 579,
-                "y": 210
+                "x": 570,
+                "y": 170,
+                "btnname":"Mooji_Ui_Icon_Recharge"
+            },
+            "Mooji_Ui_Icon_Plus.png":{
+                "postype": 1,
+                "x": 550,
+                "y": 150,
+                "btnname":"Mooji_Ui_Icon_Plus"
+            },
+            "Mooji_Ui_Hero_Hat.png":{
+                "postype": 1,
+                "x": 530,
+                "y": 810,
+                "btnname":"Mooji_Ui_Hero_Hat"
+            },
+           
+           "Mooji_Ui_Letter.png":{
+                "postype": 1,
+                "x": 550,
+                "y": 910,
+                "btnname":"Mooji_Ui_Letter"
+            },
+            "Mooji_Ui_Prompt.png":{
+                "postype": 1,
+                "x": 400,
+                "y": 910,
+                "btnname":"Mooji_Ui_Prompt"
+            },
+            "Mooji_Ui_Task_Interphone.png":{
+                "postype": 1,
+                "x": 0,
+                "y": 890,
+                "btnname":"Mooji_Ui_Task_Interphone"
+            },
+            "Mooji_The_Chest.png":{
+                "postype": 1,
+                "x": 530,
+                "y": 710,
+                "btnname":"Mooji_The_Chest"
+            },
+            "Mooji_Ui_Icon_Globe_128X128.png":{
+                "postype": 1,
+                "x": 0,
+                "y": 810,
+                "btnname":"Mooji_Ui_Icon_Globe_128X128"
             }
+            
+            
         }
         
     },
@@ -98,18 +193,20 @@
                 "postype": 0,
                 "x": 520,
                 "y": 25,
-                "fontsize":"20px Arial",
+                "fontsize":"25px Arial",
                 "text":"0",
-                "fill":"yellow"
+                "fill":"yellow",
+                "btnname":"diamondNum"
             
             },
              "fightValue": {
                 "postype": 0,
                 "x": 0,
                 "y": 25,
-                "fontsize":"20px Arial",
-                "text":"战斗力：50000,59625",
-                "fill":"yellow"
+                "fontsize":"25px Arial",
+                "text":"9,059,625",
+                "fill":"#FF8C69",
+                "btnname":"fightValue"
             
             },
             "foodValue": {
@@ -117,8 +214,9 @@
                 "x": 0,
                 "y": 90,
                 "fontsize":"20px Arial",
-                "text":"食物：20.9K",
-                "fill":"yellow"
+                "text":"食物：20.9k",
+                "fill":"#F2F2F2",
+                "btnname":"foodValue"
             
             },
             "woodValue": {
@@ -126,8 +224,9 @@
                 "x": 0,
                 "y": 90,
                 "fontsize":"20px Arial",
-                "text":"木材：80.9K",
-                "fill":"yellow"
+                "text":"木材：80.9k",
+                "fill":"#F2F2F2",
+                "btnname":"woodValue"
             
             },
             "mapValue": {
@@ -135,8 +234,9 @@
                 "x": 0,
                 "y": 1110,
                 "fontsize":"20px Arial",
-                "text":"Map",
-                "fill":"yellow"
+                "text":"地图",
+                "fill":"#D2B48C",
+                "btnname":"mapValue"
             
             },
             "kingdomValue": {
@@ -144,8 +244,9 @@
                 "x": 0,
                 "y":1110,
                 "fontsize":"20px Arial",
-                "text":"kingdom",
-                "fill":"yellow"
+                "text":"联盟",
+                "fill":"#D2B48C",
+                "btnname":"kingdomValue"
             
             }
         }
@@ -157,9 +258,10 @@
                 "x": 0,
                 "y": 0,
                 "btnname":"Mooji_Kraft_Paper_Bottom"
-            },
+            }
+            ,
 			"Mooji_Ui_Eject_Frame1.png": {
-                "postype": -1,
+                "postype": -9,
                 "x": 0,
                 "y": 165,
                 "btnname":"Mooji_Ui_Eject_Frame1"
@@ -174,7 +276,7 @@
                 "btnname":"chatLimit"
             },
 			"Mooji_Black_Dark_Bottom1.png": {
-                "postype": 0,
+                "postype": -9,
                 "x": 0,
                 "y": 0,
                 "btnname":"Mooji_Black_Dark_Bottom1"
@@ -199,7 +301,7 @@
                 "x": 0,
                 "y":20,
                 "fontsize":"30px Arial",
-                "text":"Chat",
+                "text":"聊天",
                 "fill":"yellow",
                 "btnname":"chatValue"
             },
@@ -229,8 +331,45 @@
                 "text":"发送",
                 "fill":"blue",
                 "btnname":"chatSubValue"
-            }
+            },
+            "Mooji_Ui_Btn_Or_On.png": {
+                "postype": -1,
+                "x": 80,
+                "y":105,
+                "sx":0.6,
+                "sy":0.8,
+                "btnname":"Mooji_Ui_Btn_Or_On"
+            },
+            "[1R]Mooji_Ui_Btn_Or_On.png": {
+                "postype": -1,
+                "x": 240,
+                "y":105,
+                "sx":0.6,
+                "sy":0.8,
+                "btnname":"Mooji_Ui_Btn_Or_On_1"
+            },
+            "[2R]Mooji_Ui_Btn_Or_On.png": {
+                "postype": -1,
+                "x": 400,
+                "y":105,
+                "sx":0.6,
+                "sy":0.8,
+                "btnname":"Mooji_Ui_Btn_Or_On_2"
+            },
             
+            "Mooji_Ui_Vip.png": {
+                "postype": -1,
+                "x": 20,
+                "y": 0,
+                
+                "btnname":"chat_Mooji_Ui_Vip"
+            },
+            "Mooji_Switch.png": {
+                "postype": -1,
+                "x": 25,
+                "y": 20,
+                "btnname":"Mooji_Switch"
+            }
 
             
             
@@ -246,7 +385,7 @@
                 "btnname":"item_Mooji_Kraft_Paper_Bottom"
             },
 			"Mooji_Ui_Eject_Frame1.png": {
-                "postype": -1,
+                "postype": -9,
                 "x": 0,
                 "y": 105,
                 "btnname":"item_Mooji_Ui_Eject_Frame1"
@@ -261,7 +400,7 @@
                 "btnname":"item_chatLimit"
             },
 			"Mooji_Black_Dark_Bottom1.png": {
-                "postype": 0,
+                "postype": -9,
                 "x": 0,
                 "y": 0,
                 "btnname":"item_Mooji_Black_Dark_Bottom1"
@@ -286,10 +425,61 @@
                 "x": 0,
                 "y":20,
                 "fontsize":"30px Arial",
-                "text":"Item",
+                "text":"道具",
                 "fill":"yellow",
                 "btnname":"item_chatValue"
-            }   
+            },
+            "Mooji_Ui_Btn_Or_On.png": {
+                "postype": -1,
+                "x": 60,
+                "y":95,
+                "btnname":"item_Mooji_Ui_Btn_Or_On"
+            },
+            "[1R]Mooji_Ui_Btn_Or_On.png": {
+                "postype": -1,
+                "x": 325,
+                "y":95,
+                "btnname":"item_Mooji_Ui_Btn_Or_On_1"
+            },
+            
+            "Mooji_Ui_Return_Button.png": {
+                "postype": -1,
+                "x": 20,
+                "y": 0,
+                
+                "btnname":"item_Mooji_Ui_Return_Button"
+            },
+            
+            "Mooji_Ui_Botton.png": {
+                "postype": -1,
+                "x": 20,
+                "y": 200,
+                "btnname":"item_Mooji_Ui_Botton"
+            },
+             "[1R]Mooji_Ui_Botton.png": {
+                "postype": -1,
+                "x": 140,
+                "y": 200,
+                "btnname":"item_Mooji_Ui_Botton_1"
+            },
+             "[2R]Mooji_Ui_Botton.png": {
+                "postype": -1,
+                "x": 260,
+                "y": 200,
+                "btnname":"item_Mooji_Ui_Botton_2"
+            },
+             "[3R]Mooji_Ui_Botton.png": {
+                "postype": -1,
+                "x": 380,
+                "y": 200,
+                "btnname":"item_Mooji_Ui_Botton_3"
+            },
+             "[4R]Mooji_Ui_Botton.png": {
+                "postype": -1,
+                "x": 500,
+                "y": 200,
+                "btnname":"item_Mooji_Ui_Botton_4"
+            }
             
         }
     }

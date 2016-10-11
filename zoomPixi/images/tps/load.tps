@@ -22,7 +22,7 @@
         <key>dataFormat</key>
         <string>json</string>
         <key>textureFileName</key>
-        <filename>../mainui.png</filename>
+        <filename>../loading.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -70,7 +70,7 @@
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
-            <enum type="AlgorithmSettings::AlgorithmId">Basic</enum>
+            <enum type="AlgorithmSettings::AlgorithmId">MaxRects</enum>
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
@@ -99,7 +99,7 @@
             <key>packageName</key>
             <string>Texture</string>
             <key>javaFileName</key>
-            <filename>../mainui.java</filename>
+            <filename>loading.java</filename>
             <key>wrap</key>
             <struct type="AndEngineWrap">
                 <key>s</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>../mainui.json</filename>
+        <filename>../loading.json</filename>
         <key>mainExtension</key>
         <string></string>
         <key>forceIdenticalLayout</key>
@@ -146,62 +146,23 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../pic/Mooji_Ui_Button_Recharge_Big1.png</filename>
-            <filename>../pic/Mooji_Ui_Button_Recharge_Big2.png</filename>
-            <filename>../pic/Mooji_Ui_Diamonds.png</filename>
-            <filename>../pic/Mooji_Ui_Diamonds_Green1.png</filename>
-            <filename>../pic/Mooji_Ui_Down_Bottom.png</filename>
-            <filename>../pic/Mooji_Ui_Guild_Number_Bottom3.png</filename>
-            <filename>../pic/Mooji_Ui_Head_Background2.png</filename>
-            <filename>../pic/Mooji_Ui_Head_Rufus_Partly_BT.png</filename>
-            <filename>../pic/Mooji_Ui_Hero_Hat.png</filename>
-            <filename>../pic/Mooji_Ui_Icon.png</filename>
-            <filename>../pic/Mooji_Ui_Icon_Bt_Barrel.png</filename>
-            <filename>../pic/Mooji_Ui_Icon_Globe_128X128.png</filename>
-            <filename>../pic/Mooji_Ui_Icon_Plus.png</filename>
-            <filename>../pic/Mooji_Ui_Icon_Recharge.png</filename>
-            <filename>../pic/Mooji_Ui_Letter.png</filename>
-            <filename>../pic/Mooji_Ui_Magnifier_Seek.png</filename>
-            <filename>../pic/Mooji_Ui_Map.png</filename>
-            <filename>../pic/Mooji_Ui_Prompt.png</filename>
-            <filename>../pic/Mooji_Ui_Release_Task_Bottom1.png</filename>
-            <filename>../pic/Mooji_Ui_Up_Bottom.png</filename>
-            <filename>../pic/Mooji_Ui_Up_Bottom_Iron.png</filename>
-            <filename>../pic/Mooji_Ui_Vip.png</filename>
-            <filename>../pic/dalier.png</filename>
-            <filename>../pic/Mooji_Kraft_Paper_Bottom.png</filename>
-            <filename>../pic/Mooji_The_Chest.png</filename>
-            <filename>../pic/Mooji_Ui_Alliance_Icon.png</filename>
-            <filename>../pic/Mooji_Ui_Button.png</filename>
-            <filename>../pic/Mooji_Ui_Button_Recharge.png</filename>
-            <filename>../pic/Mooji_Ui_Button_Recharge_Big.png</filename>
-            <filename>../pic/Mooji_Ui_Close_Button.png</filename>
-            <filename>../pic/Mooji_Ui_Payment_Line.png</filename>
-            <filename>../pic/Mooji_Buttom_white.png</filename>
-            <filename>../pic/Mooji_Ui_Btn_Blue_80x78.png</filename>
-            <filename>../pic/Mooji_Buttom_F1_434X62.png</filename>
-            <filename>../pic/Mooji_Icon_Recruit.png</filename>
-            <filename>../pic/Mooji_Ui_Return_Button.png</filename>
-            <filename>../pic/Mooji_Ui_Btn_Blue_178x64.png</filename>
-            <filename>../pic/Mooji_Ui_Icon_Iron_Yellow_Bg125x125.png</filename>
-            <filename>../pic/Mooji_Ui_Icon_Iron_Bg125x125.png</filename>
-            <filename>../pic/Mooji_Ui_Icon_Iron_Blue_Bg125x125.png</filename>
-            <filename>../pic/Mooji_Ui_Icon_Iron_Green_Bg125x125.png</filename>
-            <filename>../pic/Mooji_Ui_Icon_Iron_Red_Bg125x125.png</filename>
-            <filename>../pic/Mooji_Ui_Icon_Iron_White_Bg125x125.png</filename>
-            <filename>../pic/Mooji_Dividing_line.png</filename>
-            <filename>../../../../../moojiall/Mooji_Ui_Btn_Yellow_80x78.png</filename>
-            <filename>../pic/Mooji_Ui_Gold5.png</filename>
-            <filename>../pic/Mooji_Ui_Task_Interphone.png</filename>
-            <filename>../pic/Mooji_Ui_Task_Bottom.png</filename>
-            <filename>../pic/Mooji_Ui_Icon1.png</filename>
-            <filename>../pic/Mooji_Ui_Guild_Number_Bottom1.png</filename>
-            <filename>../pic/Mooji_Ui_Btn_Or_Off.png</filename>
-            <filename>../pic/Mooji_Ui_Btn_Or_On.png</filename>
-            <filename>../pic/Mooji_Switch.png</filename>
-            <filename>../pic/Mooji_Set_up_Bright.png</filename>
-            <filename>../pic/Mooji_Ui_Botton.png</filename>
-            <filename>../pic/Mooji_Ui_Eject_Frame1.png</filename>
+            <filename>../pic/Mooji_Ui_Loading.png</filename>
+            <filename>../pic/loading/Mooji_Loading_Green_01_00008.png</filename>
+            <filename>../pic/loading/Mooji_Loading_Green_01_00009.png</filename>
+            <filename>../pic/loading/Mooji_Loading_Green_01_00002.png</filename>
+            <filename>../pic/loading/Mooji_Loading_Green_01_00003.png</filename>
+            <filename>../pic/loading/Mooji_Loading_Green_01_00004.png</filename>
+            <filename>../pic/loading/Mooji_Loading_Green_01_00005.png</filename>
+            <filename>../pic/loading/Mooji_Loading_Green_01_00006.png</filename>
+            <filename>../pic/loading/Mooji_Loading_Green_01_00007.png</filename>
+            <filename>../pic/Mooji_Ui_Menus_Hero_Exp_Bar_Big.png</filename>
+            <filename>../pic/Mooji_Ui_Menus_Hero_Exp_Bar1.png</filename>
+            <filename>../pic/Mooji_Ui_Menus_Hero_Exp_Bar.png</filename>
+            <filename>../pic/Mooji_Blood_Green.png</filename>
+            <filename>../pic/Mooji_Blood_Green_Big.png</filename>
+            <filename>../pic/Mooji_Ui_Btn_Green_363x62.png</filename>
+            <filename>../pic/Mooji_Ui_Btn_Blue_363x62.png</filename>
+            <filename>../pic/Mooji_Ui_Btn_Facebook_1.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
