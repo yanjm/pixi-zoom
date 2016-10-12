@@ -332,47 +332,150 @@
                 "fill":"blue",
                 "btnname":"chatSubValue"
             },
-            "Mooji_Ui_Btn_Or_On.png": {
-                "postype": -1,
+            "Mooji_Ui_Btn_Or_Off.png": {
+                "postype": 1,
                 "x": 80,
                 "y":105,
                 "sx":0.6,
                 "sy":0.8,
-                "btnname":"Mooji_Ui_Btn_Or_On"
+                "btnname":"Mooji_Ui_Btn_Or_Off",
+                
+                "childnode":{
+                    "chatTab_1":{
+                    "postype": 9,
+                    "x": 75,
+                    "y":10,
+                    "fontsize":"30px Arial",
+                    "text":"幸存者",
+                    "fill":"grey",
+                    "btnname":"chatTab_1P_1"
+                    }
+                }
             },
+            "Mooji_Ui_Btn_Or_On.png": {
+                "postype": 1,
+                "x": 80,
+                "y":105,
+                "sx":0.6,
+                "sy":0.8,
+                "btnname":"Mooji_Ui_Btn_Or_On",
+                "childnode":{
+                    "chatTab":{
+                        "postype": 9,
+                        "x": 75,
+                        "y":10,
+                        "fontsize":"30px Arial",
+                        "text":"幸存者",
+                        "fill":"yellow",
+                        "btnname":"chatTab_1",
+                        "childnode":{
+                            "chatTab_1":{
+                            "postype": -9,
+                            "x": 55,
+                            "y":10,
+                            "fontsize":"30px Arial",
+                            "text":"幸存者",
+                            "fill":"red",
+                            "btnname":"chatTab_1_1"
+                            }
+                        }
+                    }
+                }
+            },
+            
+            
             "[1R]Mooji_Ui_Btn_Or_On.png": {
-                "postype": -1,
+                "postype": 1,
                 "x": 240,
                 "y":105,
                 "sx":0.6,
                 "sy":0.8,
-                "btnname":"Mooji_Ui_Btn_Or_On_1"
+                "btnname":"Mooji_Ui_Btn_Or_On_1",
+                "childnode":{
+                    "chatTab_2":{
+                    "postype": 9,
+                    "x": 85,
+                    "y":15,
+                    "fontsize":"30px Arial",
+                    "text":"联盟",
+                    "fill":"yellow",
+                    "btnname":"chatTab_2"
+                    }
+                }
             },
+            "[1R]Mooji_Ui_Btn_Or_Off.png": {
+                "postype": 1,
+                "x": 240,
+                "y":105,
+                "sx":0.6,
+                "sy":0.8,
+                "btnname":"Mooji_Ui_Btn_Or_Off_1",
+                "childnode":{
+                    "chatTab_2":{
+                    "postype": 9,
+                    "x": 85,
+                    "y":15,
+                    "fontsize":"30px Arial",
+                    "text":"联盟",
+                    "fill":"grey",
+                    "btnname":"chatTab_2p"
+                    }
+                }
+            },
+            
             "[2R]Mooji_Ui_Btn_Or_On.png": {
-                "postype": -1,
+                "postype": 1,
                 "x": 400,
                 "y":105,
                 "sx":0.6,
                 "sy":0.8,
-                "btnname":"Mooji_Ui_Btn_Or_On_2"
+                "btnname":"Mooji_Ui_Btn_Or_On_2",
+                "childnode":{
+                    "chatTab_3":{
+                    "postype": 9,
+                    "x": 80,
+                    "y":15,
+                    "fontsize":"30px Arial",
+                    "text":"Kingdom",
+                    "fill":"yellow",
+                    "btnname":"chatTab_3"
+                    }
+                }
+            },
+            "[2R]Mooji_Ui_Btn_Or_Off.png": {
+                "postype": 1,
+                "x": 400,
+                "y":105,
+                "sx":0.6,
+                "sy":0.8,
+                "btnname":"Mooji_Ui_Btn_Or_Off_2",
+                "childnode":{
+                    "chatTab_3":{
+                    "postype": 9,
+                    "x": 80,
+                    "y":15,
+                    "fontsize":"30px Arial",
+                    "text":"Kingdom",
+                    "fill":"grey",
+                    "btnname":"chatTab_3p"
+                    }
+                }
             },
             
             "Mooji_Ui_Vip.png": {
-                "postype": -1,
+                "postype": 1,
                 "x": 20,
                 "y": 0,
-                
-                "btnname":"chat_Mooji_Ui_Vip"
-            },
-            "Mooji_Switch.png": {
-                "postype": -1,
-                "x": 25,
-                "y": 20,
-                "btnname":"Mooji_Switch"
+                "btnname":"chat_Mooji_Ui_Vip",
+                "childnode":{
+                    "Mooji_Switch.png":{
+                        "postype": 0,
+                        "x": 5,
+                        "y":20,
+                        "btnname":"Mooji_Switch"
+                    }
+                }
             }
-
-            
-            
         }
         
     },
@@ -429,56 +532,225 @@
                 "fill":"yellow",
                 "btnname":"item_chatValue"
             },
-            "Mooji_Ui_Btn_Or_On.png": {
-                "postype": -1,
+            "Mooji_Ui_Btn_Or_Off.png": {
+                "postype": 1,
                 "x": 60,
                 "y":95,
-                "btnname":"item_Mooji_Ui_Btn_Or_On"
+                "btnname":"item_Mooji_Ui_Btn_Or_Off",
+                "childnode":{
+                    "chatTab_3":{
+                    "postype": 9,
+                    "x": 60,
+                    "y":10,
+                    "fontsize":"25px Arial",
+                    "text":"道具商城",
+                    "fill":"grey",
+                    "btnname":"item_Off"
+                    }
+                }
             },
+            "Mooji_Ui_Btn_Or_On.png": {
+                "postype": 1,
+                "x": 60,
+                "y":95,
+                "btnname":"item_Mooji_Ui_Btn_Or_On",
+                "childnode":{
+                    "chatTab_3":{
+                    "postype": 9,
+                    "x": 60,
+                    "y":10,
+                    "fontsize":"25px Arial",
+                    "text":"道具商城",
+                    "fill":"yellow",
+                    "btnname":"chatTab_3"
+                    }
+                }
+            },
+           
+            
             "[1R]Mooji_Ui_Btn_Or_On.png": {
-                "postype": -1,
+                "postype": 1,
                 "x": 325,
                 "y":95,
-                "btnname":"item_Mooji_Ui_Btn_Or_On_1"
+                "btnname":"item_Mooji_Ui_Btn_Or_On_1",
+                "childnode":{
+                    "chatTab_3":{
+                    "postype": 9,
+                    "x": 60,
+                    "y":10,
+                    "fontsize":"25px Arial",
+                    "text":"我的道具",
+                    "fill":"yellow",
+                    "btnname":"chatTab_3_1"
+                    }
+                }
+            },
+             "[1R]Mooji_Ui_Btn_Or_Off.png": {
+                "postype": 1,
+                "x": 325,
+                "y":95,
+                "btnname":"item_Mooji_Ui_Btn_Or_Off_1",
+                "childnode":{
+                    "chatTab_3":{
+                    "postype": 9,
+                    "x": 60,
+                    "y":10,
+                    "fontsize":"25px Arial",
+                    "text":"我的道具",
+                    "fill":"grey",
+                    "btnname":"item_Off_1"
+                    }
+                }
             },
             
             "Mooji_Ui_Return_Button.png": {
-                "postype": -1,
+                "postype": 1,
                 "x": 20,
                 "y": 0,
                 
                 "btnname":"item_Mooji_Ui_Return_Button"
             },
+
+            "itemTab_s1": {
+                "postype": 9,
+                "x": 60,
+                "y": 205,
+                "fontsize":"20px Arial",
+                "text":"资源",
+                 "fill":"yellow",
+                "btnname":"itemTab_s1"
             
+            },
             "Mooji_Ui_Botton.png": {
-                "postype": -1,
+                "postype": 1,
                 "x": 20,
                 "y": 200,
-                "btnname":"item_Mooji_Ui_Botton"
+                "btnname":"item_Mooji_Ui_Botton",
+                "childnode":{
+                    "itemTab_1":{
+                    "postype": 9,
+                    "x": 40,
+                    "y":5,
+                    "fontsize":"20px Arial",
+                    "text":"资源",
+                    "fill":"#F2F2F2",
+                    "btnname":"itemTab_1"
+                    }
+                }
+            },
+            
+            
+            
+            "itemTab_s2": {
+                "postype": 9,
+                "x": 180,
+                "y": 205,
+                "fontsize":"20px Arial",
+                "text":"加速",
+                 "fill":"yellow",
+                "btnname":"itemTab_s2"
+            
             },
              "[1R]Mooji_Ui_Botton.png": {
-                "postype": -1,
+                "postype": 1,
                 "x": 140,
                 "y": 200,
-                "btnname":"item_Mooji_Ui_Botton_1"
+                "btnname":"item_Mooji_Ui_Botton_1",
+                "childnode":{
+                    "itemTab_2":{
+                    "postype": 9,
+                    "x": 40,
+                    "y":5,
+                    "fontsize":"20px Arial",
+                    "text":"加速",
+                    "fill":"#F2F2F2",
+                    "btnname":"itemTab_2"
+                    }
+                }
+            },
+
+            "itemTab_s3": {
+                "postype": 9,
+                "x": 300,
+                "y": 205,
+                "fontsize":"20px Arial",
+                "text":"功能",
+                 "fill":"yellow",
+                "btnname":"itemTab_s3"
+            
             },
              "[2R]Mooji_Ui_Botton.png": {
-                "postype": -1,
+                "postype": 1,
                 "x": 260,
                 "y": 200,
-                "btnname":"item_Mooji_Ui_Botton_2"
+                "btnname":"item_Mooji_Ui_Botton_2",
+                "childnode":{
+                    "itemTab_3":{
+                    "postype": 9,
+                    "x": 40,
+                    "y":5,
+                    "fontsize":"20px Arial",
+                    "text":"功能",
+                    "fill":"#F2F2F2",
+                    "btnname":"itemTab_3"
+                    }
+                }
+            },
+
+             "itemTab_s4": {
+                "postype": 9,
+                "x": 420,
+                "y": 205,
+                "fontsize":"20px Arial",
+                "text":"特殊",
+                 "fill":"yellow",
+                "btnname":"itemTab_s4"
+            
             },
              "[3R]Mooji_Ui_Botton.png": {
-                "postype": -1,
+                "postype": 1,
                 "x": 380,
                 "y": 200,
-                "btnname":"item_Mooji_Ui_Botton_3"
+                "btnname":"item_Mooji_Ui_Botton_3",
+                "childnode":{
+                    "chatTab_4":{
+                    "postype": 9,
+                    "x": 40,
+                    "y":5,
+                    "fontsize":"20px Arial",
+                    "text":"特殊",
+                    "fill":"#F2F2F2",
+                    "btnname":"itemTab_4"
+                    }
+                }
+            },
+
+            "itemTab_s5": {
+                "postype": 9,
+                "x": 540,
+                "y": 205,
+                "fontsize":"20px Arial",
+                "text":"英雄",
+                 "fill":"yellow",
+                "btnname":"itemTab_s5"
+            
             },
              "[4R]Mooji_Ui_Botton.png": {
-                "postype": -1,
+                "postype": 1,
                 "x": 500,
                 "y": 200,
-                "btnname":"item_Mooji_Ui_Botton_4"
+                "btnname":"item_Mooji_Ui_Botton_4",
+                "childnode":{
+                    "chatTab_5":{
+                    "postype": 9,
+                    "x": 40,
+                    "y":5,
+                    "fontsize":"20px Arial",
+                    "text":"英雄",
+                    "fill":"#F2F2F2",
+                    "btnname":"itemTab_5"
+                    }
+                }
             }
             
         }

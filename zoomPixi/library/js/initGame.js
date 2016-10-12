@@ -169,7 +169,7 @@ function initChatUI(){
     for(let layername in chatdata){
       let layer = chatdata[layername]
       for(let prop in layer){
-          chatact(this[prop],prop,layer[prop]);
+          chatact(this[prop],prop,layer[prop],chatStyle);
       }
     }
     
@@ -191,6 +191,26 @@ function initChatUI(){
       sceneState = pre_sceneState;
     }
 
+    Mooji_Ui_Btn_Or_Off.click = function(data){//打开
+      Mooji_Ui_Btn_Or_On.visible = true;
+      Mooji_Ui_Btn_Or_Off_1.visible = true;
+      Mooji_Ui_Btn_Or_Off_2.visible = true;
+    }
+
+
+    Mooji_Ui_Btn_Or_Off_1.click = function(data){//打开
+      Mooji_Ui_Btn_Or_Off_1.visible = false;
+      Mooji_Ui_Btn_Or_On.visible = false;
+      Mooji_Ui_Btn_Or_Off_2.visible = true;
+    }
+
+
+    Mooji_Ui_Btn_Or_Off_2.click = function(data){//打开
+      Mooji_Ui_Btn_Or_Off_2.visible = false;
+      Mooji_Ui_Btn_Or_Off_1.visible = true;
+      Mooji_Ui_Btn_Or_On.visible = false;
+    }
+  
     chatValue.position.x = renderer.width/2 - chatValue.width/2;
 
     Mooji_Ui_Eject_Frame1.scale.y = 1.3;
@@ -235,7 +255,7 @@ function initItemUI(){
     for(let layername in itemdata){
       let layer = itemdata[layername]
       for(let prop in layer){
-          itemact(this[prop],prop,layer[prop]);
+          itemact(this[prop],prop,layer[prop],itemStyle);
       }
     }
     
@@ -256,6 +276,19 @@ function initItemUI(){
       
       sceneState = pre_sceneState;
     }
+
+    item_Mooji_Ui_Return_Button.mousedown = function(data){
+      item_Mooji_Ui_Return_Button.scale.x += 0.1;
+      item_Mooji_Ui_Return_Button.scale.y += 0.1;
+    }
+    item_Mooji_Ui_Return_Button.mouseup = function(data){
+      item_Mooji_Ui_Return_Button.scale.x -= 0.1;
+      item_Mooji_Ui_Return_Button.scale.y -= 0.1;
+      
+      sceneState = pre_sceneState;
+    }
+
+
     //标题文字
     item_chatValue.position.x = renderer.width/2 - chatValue.width/2;
     //标题背景
@@ -264,6 +297,70 @@ function initItemUI(){
     // item_Mooji_Black_Dark_Bottom1.position.y = item_Mooji_Ui_Up_Bottom_Iron.height-20;
     // item_Mooji_Black_Dark_Bottom1.position.x = -10;
     // item_Mooji_Black_Dark_Bottom1.scale.x = 1.5;
+
+
+    item_Mooji_Ui_Btn_Or_Off_1.click = function(data){//打开
+      item_Mooji_Ui_Btn_Or_On.visible = false;
+      item_Mooji_Ui_Btn_Or_Off_1.visible = false;
+    }
+
+    item_Mooji_Ui_Btn_Or_Off.click = function(data){//打开
+      item_Mooji_Ui_Btn_Or_On.visible = true;
+      item_Mooji_Ui_Btn_Or_Off_1.visible = true;
+    }
+
+    item_Mooji_Ui_Botton.visible = false;
+
+    item_Mooji_Ui_Botton.click = function(data){//打开
+      item_Mooji_Ui_Botton.visible = false;
+      
+      item_Mooji_Ui_Botton_1.visible = true;
+      item_Mooji_Ui_Botton_2.visible = true;
+      item_Mooji_Ui_Botton_3.visible = true;
+      item_Mooji_Ui_Botton_4.visible = true;
+      
+    }
+
+    item_Mooji_Ui_Botton_1.click = function(data){//打开
+      item_Mooji_Ui_Botton_1.visible = false;
+      
+      item_Mooji_Ui_Botton.visible = true;
+      item_Mooji_Ui_Botton_2.visible = true;
+      item_Mooji_Ui_Botton_3.visible = true;
+      item_Mooji_Ui_Botton_4.visible = true;
+      
+    }
+
+    item_Mooji_Ui_Botton_2.click = function(data){//打开
+      item_Mooji_Ui_Botton_2.visible = false;
+      
+      item_Mooji_Ui_Botton.visible = true;
+      item_Mooji_Ui_Botton_1.visible = true;
+      item_Mooji_Ui_Botton_3.visible = true;
+      item_Mooji_Ui_Botton_4.visible = true;
+      
+    }
+
+    item_Mooji_Ui_Botton_3.click = function(data){//打开
+      item_Mooji_Ui_Botton_3.visible = false;
+      
+      item_Mooji_Ui_Botton.visible = true;
+      item_Mooji_Ui_Botton_2.visible = true;
+      item_Mooji_Ui_Botton_1.visible = true;
+      item_Mooji_Ui_Botton_4.visible = true;
+      
+    }
+
+    item_Mooji_Ui_Botton_4.click = function(data){//打开
+      item_Mooji_Ui_Botton_4.visible = false;
+      
+      item_Mooji_Ui_Botton.visible = true;
+      item_Mooji_Ui_Botton_2.visible = true;
+      item_Mooji_Ui_Botton_3.visible = true;
+      item_Mooji_Ui_Botton_1.visible = true;
+      
+    }
+
 
 }
 
@@ -290,7 +387,7 @@ function uibtnact(btnObj,prop,buttonInfo){
   innerui.addChild(this[buttonInfo.btnname]);
 }
 
-function chatact(btnObj,prop,buttonInfo){
+function chatact(btnObj,prop,buttonInfo,parentAdd){
 
   if(buttonInfo.postype==8){
     this[buttonInfo.btnname] = new Container();
@@ -308,12 +405,22 @@ function chatact(btnObj,prop,buttonInfo){
     this[buttonInfo.btnname].scale.x = actScale(buttonInfo.sx);
     this[buttonInfo.btnname].scale.y = actScale(buttonInfo.sy);
   }
+
+  //childNode
+  if(buttonInfo.childnode!=null){
+    for(let layername in buttonInfo.childnode){
+      let layer = buttonInfo.childnode[layername]
+          chatact("",layername,layer,this[buttonInfo.btnname]);
+      }
+  }
+
   if(buttonInfo.postype!=-9){
-    chatStyle.addChild(this[buttonInfo.btnname]);
+    chatBtnEvent(this[buttonInfo.btnname],buttonInfo);
+    parentAdd.addChild(this[buttonInfo.btnname]);
   }
 }
 
-function itemact(btnObj,prop,buttonInfo){
+function itemact(btnObj,prop,buttonInfo,parentAdd){
 
   if(buttonInfo.postype==8){
     this[buttonInfo.btnname] = new Container();
@@ -328,8 +435,18 @@ function itemact(btnObj,prop,buttonInfo){
     this[buttonInfo.btnname].position.x = buttonInfo.x;
     this[buttonInfo.btnname].position.y = buttonInfo.y;
   }
+
+  if(buttonInfo.childnode!=null){
+    for(let layername in buttonInfo.childnode){
+      let layer = buttonInfo.childnode[layername]
+          itemact("",layername,layer,this[buttonInfo.btnname]);
+      }
+  }
+
+
   if(buttonInfo.postype!=-9){
-    itemStyle.addChild(this[buttonInfo.btnname]);
+    itemBtnEvent(this[buttonInfo.btnname],buttonInfo);
+    parentAdd.addChild(this[buttonInfo.btnname]);
   }
 }
 
@@ -379,6 +496,54 @@ function createbtnrange(btnrange,btnObj,buttonInfo){
 
 }
 
+function radioBtn(){
+
+}
+
+function itemBtnEvent(btnObj,buttonInfo){
+  if(buttonInfo.postype !=-1){//-1,不处理事件
+    if(buttonInfo.postype == 0){//0，裁剪范围事件
+      //this[buttonInfo.btnName+"event"] = new Sprite();
+      //createbtnrange( this[buttonInfo.btnName+"event"],btnObj,buttonInfo)
+
+    }else if(buttonInfo.postype == 9){//9,Text
+    }else{//sprite，即事件触发
+      btnObj.interactive = true;
+      btnObj.buttonMode = true;
+      btnObj.click = function(data){
+        btnObj.scale.x -= 0.05;
+        btnObj.scale.y -= 0.05;
+        setTimeout(function(){
+           btnObj.scale.x += 0.05;
+           btnObj.scale.y += 0.05;
+        },30) ;
+      }
+    }
+  }
+}
+
+function chatBtnEvent(btnObj,buttonInfo){
+  if(buttonInfo.postype !=-1){//-1,不处理事件
+    if(buttonInfo.postype == 0){//0，裁剪范围事件
+      //this[buttonInfo.btnName+"event"] = new Sprite();
+      //createbtnrange( this[buttonInfo.btnName+"event"],btnObj,buttonInfo)
+
+    }else if(buttonInfo.postype == 9){//9,Text
+    }else{//sprite，即事件触发
+      btnObj.interactive = true;
+      btnObj.buttonMode = true;
+      btnObj.click = function(data){
+        btnObj.scale.x -= 0.05;
+        btnObj.scale.y -= 0.05;
+        setTimeout(function(){
+           btnObj.scale.x += 0.05;
+           btnObj.scale.y += 0.05;
+        },30) ;
+      }
+    }
+  }
+}
+
 function btnevent(btnObj,buttonInfo){
   if(buttonInfo.postype !=-1){//-1,不处理事件
     if(buttonInfo.postype == 0){//0，裁剪范围事件
@@ -389,14 +554,15 @@ function btnevent(btnObj,buttonInfo){
     }else{//sprite，即事件触发
       btnObj.interactive = true;
       btnObj.buttonMode = true;
-      btnObj.mousedown = function(data){
+      btnObj.click = function(data){
         btnObj.scale.x -= 0.05;
         btnObj.scale.y -= 0.05;
-      }
-      btnObj.mouseup = function(data){
-        btnObj.scale.x += 0.05;
-        btnObj.scale.y += 0.05;
-        changeState(buttonInfo.btnname);
+
+        setTimeout(function(){
+           btnObj.scale.x += 0.05;
+           btnObj.scale.y += 0.05;
+           changeState(buttonInfo.btnname);
+        },20) ;
       }
     }
   }
@@ -449,6 +615,7 @@ function getChats(){
       chatDataL.position.y = chatHeadL.position.y;
 
       let chatMsgL = new PIXI.Text(chatInfo.chatmsg,{fontSize:"15px Arial",fill:"black"});
+      
       chatMsgL.scale.x = 0.7;
       chatMsgL.scale.y = 0.7;
       lastChat.addChild(chatMsgL);
@@ -461,13 +628,15 @@ function getChats(){
     }
     
   }
+
+
 }
 
 function everychat(chatContainer,chatHead,chatData,chatMsg,i){
     let rowEnd = new PIXI.Text(i);
     rowEnd.position.x = 520;
     rowEnd.position.y = chatData.position.y ;
-    
+
     chatContainer.addChild(chatHead);
     chatContainer.addChild(chatData);
     chatContainer.addChild(chatMsg);
@@ -523,6 +692,7 @@ function getItems(){
 
     itemPrice.interactive = true;
     itemPrice.mousedown = function(data){
+        console.log("0sdfkji89");
         // priceType.scale.x += 0.1;
         // priceType.scale.y += 0.1;
         price.scale.x += 0.1;
